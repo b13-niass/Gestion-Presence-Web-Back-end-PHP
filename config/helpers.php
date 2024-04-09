@@ -27,11 +27,34 @@ function listPaginate($per_page, $page_number=1, $listes){
     return $tabPaginate;
 }
 
-
-function read_write_files($file_name, $mode, $data = null){
-    
-    if($data != null){
-        return $data;
+$keys = [
+    'matricule',
+    'nom',
+    'prenom',
+    'tel',
+    'referentiel',
+    'heure_arrivee',
+    'etat',
+    'date'
+];
+function read_data_files($file_name, $mode, $keys){
+    $file_name = FILES."/$file_name";
+    $results = null;
+    $row = 1;
+    if (($handle = fopen($file_name, $mode)) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            // $num = count($data);
+            $row++;
+            $results = array_combine($keys, $data);
+            
+        }
+        fclose($handle);
     }
+    return $results;
+}
+
+function write_data_files($file_name, $mode){
+
+    
     
 }

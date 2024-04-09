@@ -73,7 +73,67 @@
                 'referentiel' => 1,
                 'heure_arrivee' => '07:45',
                 'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
                 'date' => '03-01-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '03-01-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
             ],
             [
                 'matricule' => 'P6_DEVDAT_2024_131',
@@ -113,7 +173,47 @@
                 'referentiel' => 1,
                 'heure_arrivee' => '07:45',
                 'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
                 'date' => '03-01-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '03-01-2024'
+            ],
+            [
+                'matricule' => 'P6_DEVDAT_2024_131',
+                'nom' => 'Thiam',
+                'prenom' => 'Moussa',
+                'tel' => '775678901',
+                'referentiel' => 1,
+                'heure_arrivee' => '07:45',
+                'etat' => 1,
+                'date' => '09-04-2024'
             ],
             [
                 'matricule' => 'P6_DEVDAT_2024_131',
@@ -153,107 +253,7 @@
                 'referentiel' => 1,
                 'heure_arrivee' => '07:45',
                 'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
-            ],
-            [
-                'matricule' => 'P6_DEVDAT_2024_131',
-                'nom' => 'Thiam',
-                'prenom' => 'Moussa',
-                'tel' => '775678901',
-                'referentiel' => 1,
-                'heure_arrivee' => '07:45',
-                'etat' => 1,
-                'date' => '03-01-2024'
+                'date' => '09-04-2024'
             ],
             [
                 'matricule' => 'P6_DEVWEB_2024_131',
@@ -283,7 +283,7 @@
                 'referentiel' => 3,
                 'heure_arrivee' => '08:00',
                 'etat' => 1,
-                'date' => '05-01-2024'
+                'date' => '09-04-2024'
             ],
             [
                 'matricule' => 'P6_DEVWEB_2024_135',
@@ -388,15 +388,18 @@
 
     function findAllPresenceSearch($search = null, $presences){
         $presenceFilter = [];
-        // dd($search);
+        // dd($search === '09-04-2024');
         if($search != null){
                 $presenceFilter = array_filter($presences, function($value) use($search){
-                    return $value['matricule'] === $search || $value['nom'] === $search || $value['prenom'] === $search || $value['tel'] === $search || getReferentielName($value['referentiel'] === $search)  ; 
+                    return $value['matricule'] === $search || $value['nom'] === $search 
+                    || $value['prenom'] === $search || $value['tel'] === $search 
+                    || getReferentielName($value['referentiel']) === $search 
+                    || $value['date'] === $search  ; 
                 });
                 $presenceFilter = array_values($presenceFilter);
     
         }
-        
+        // dd($presenceFilter);
         $presenceFilter = array_values($presenceFilter);
         return $presenceFilter;
         

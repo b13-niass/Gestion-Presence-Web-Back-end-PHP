@@ -2,6 +2,7 @@
 
 define("WEBROOT", "http://www.cheikh.ibrahima.dieng:8013/projet");
 define("ENVIRONNEMENT", "DEV");
+define("FILES", "http://www.cheikh.ibrahima.dieng:8013/projet/model/files/");
 /**
  * Pagination
  */
@@ -20,7 +21,6 @@ if (isset($_GET['page']) && !empty($_GET['page'])){
     if($_GET['page'] != "/"){
         $resource = explode('/', $_GET['page']);
         $page = $resource[1];
-        // var_dump($page);
     }
 }
 
@@ -41,6 +41,7 @@ $models = [
     'ref' => 'referentiels'
 ];
 
+
 $pages = [
     'app' => 'list_apprenants',
     'pre' => 'list_presences',
@@ -49,6 +50,7 @@ $pages = [
     'create-pro1' => 'create_promo_1',
     'create-pro2' => 'create_promo_2'
 ];
+
 
 if(array_key_exists($page, $pages)){
     $page_styles = $pages[$page];

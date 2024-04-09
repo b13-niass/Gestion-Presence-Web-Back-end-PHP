@@ -79,9 +79,14 @@
             <div class=" tableau-footer">
                 <div class="per-page">
                     <span>Items per page</span>
-                    <select name="per-page" id="">
-                        <option value="" selected>10</option>
-                    </select>
+                    <form action="" method="POST">
+                        <input type="hidden" name="page" value="app">
+                        <select name="per_page_app" onchange="this.form.submit()" id="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </form>
                 </div>
                 <div class="pagination">
                     <span> <?= $range_start+1 ." - ". $range_end ?> of <?= count($apprenants )?></span>

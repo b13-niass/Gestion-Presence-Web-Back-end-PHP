@@ -1,4 +1,3 @@
-
 <div class="right-middle">
     <div class="breadcrumbs">
         <span>Presence</span>
@@ -10,7 +9,7 @@
     <div class="content">
         <div class="tableau">
             <div class="tableau-titre">
-                <form action="" method="post" style="width: 100%;">
+                <form action="" method="post" style="width: 80%;">
                     <select class="statut" name="status">
                         <option value="" selected>Statut</option>
                         <?php
@@ -49,11 +48,14 @@
                         ?>
                         <input type="text" class="date" name="date" id="" value="<?= $date ?>" />
                         <?php } else{?>
-                        <input type="text" class="date" name="date" id="" placeholder="JJ/MM/AAAA" />
+                        <input type="text" class="date" name="date" id="" placeholder="JJ-MM-AAAA" />
                         <?php } ?>
 
                     </div>
                     <button type="submit" name="search_presence">Rafraichir</button>
+                </form>
+                <form action="" method="post" style="width: 20%;display:flex;justify-content: end;">
+                    <button type="submit" name="all_presence" style="width: 30%;">All</button>
                 </form>
             </div>
             <div class="tableau-head">

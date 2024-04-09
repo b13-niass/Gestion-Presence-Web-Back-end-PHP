@@ -8,6 +8,7 @@ $current_page = 1;
 $presencesPaginate = null;
 $presences = findAllPresence();
 
+
 // $dateString = "13-01-2024";
 // $dateString2 = "13-01-2024";
 // $formattedDate = date('d-m-Y', strtotime($dateString));
@@ -19,7 +20,18 @@ $presences = findAllPresence();
 
 
 
+
 if(!isset($_SESSION['filter_presence']) && !isset($_POST['search_presence'])){
+    // $presences = findAllPresence();
+    $presences = findAllPresenceSearch('09-04-2024', $presences);
+
+}
+
+if(isset($_POST['all_presence'])){
+    unset($_SESSION['filter_presence']);
+    unset($_SESSION['search_matricule']);
+    $_SESSION['filter_presence'] = null;
+    $_SESSION['search_matricule'] = null;
     $presences = findAllPresence();
 }
 
