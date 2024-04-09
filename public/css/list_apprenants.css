@@ -1,0 +1,24 @@
+@import "./320_480/list_apprenants.css" screen and (max-width: 480px);
+@import "./481_768/list_apprenants.css" screen and (min-width: 481px) and
+  (max-width: 768px);
+@import "./769_1024/list_apprenants.css" screen and (min-width: 769px) and
+  (max-width: 1024px);
+@import "./1025_1200/list_apprenants.css" screen and (min-width: 1025px) and
+  (max-width: 1200px);
+@import "./1201_more/list_apprenants.css" screen and (min-width: 1201px);
+
+.container {
+  width: 100%;
+  height: auto;
+  /* max-height: 1000px; */
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  column-gap: 20px;
+  /* padding-right: 1.5%; */
+}
+
+.left {
+  position: relative !important;
+  top: -209px !important;
+}

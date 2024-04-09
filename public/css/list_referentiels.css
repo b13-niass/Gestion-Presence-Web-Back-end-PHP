@@ -1,0 +1,8 @@
+@import "./320_480/list_referentiels.css" screen and (max-width: 480px);
+@import "./481_768/list_referentiels.css" screen and (min-width: 481px) and
+  (max-width: 768px);
+@import "./769_1024/list_referentiels.css" screen and (min-width: 769px) and
+  (max-width: 1024px);
+@import "./1025_1200/list_referentiels.css" screen and (min-width: 1025px) and
+  (max-width: 1200px);
+@import "./1201_more/list_referentiels.css" screen and (min-width: 1201px);
