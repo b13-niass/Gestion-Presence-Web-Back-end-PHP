@@ -181,6 +181,8 @@
 .per-page {
   position: relative;
   width: 10.5%;
+  display: flex;
+  column-gap: 9px;
 }
 
 .per-page > span {
@@ -290,4 +292,10 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.disabled-btn {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }

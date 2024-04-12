@@ -1,28 +1,29 @@
 <?php
-    session_start();
+    require_once "../model/$controller.model.php";
+
+if($uri_ == "app"){
+
     unset($_SESSION['filtre_apprenant']);
     unset($_SESSION['search_matricule']);
     $_SESSION['filtre_apprenant'] = null;
     $_SESSION['search_matricule'] = null;
     
-    
-    $current_page = 1;
-    $apprenants = findAllApprenant();
-    $nbrPage = ceil(count($apprenants)/ PER_PAGE);
-
-    if(isset($_GET['page']) && !empty($_GET['page'])){
-        $uri = explode('/', $_GET['page']);
-        if(array_key_exists(2, $uri)){
-            $current_page = (integer) $uri[2];
-            if($current_page < 1){
-                $current_page = 1;
-            }
-            if($current_page > $nbrPage){
-                $current_page = $nbrPage;
-            }
-        }
-        
+    $prom = $_SESSION['promotion_active'];
+    if(!isset($_SESSION['per_page_app'])){
+        $_SESSION['per_page_app'] = 10;
     }
+
+    if(isset($_POST['per_page_app'])){
+        $_SESSION['per_page_app'] = $_POST['per_page_app'];
+    }
+
+    $per_page = (integer) $_SESSION['per_page_app'];
+    
+
+    $apprenants = findAllApprenant($_SESSION['promotion_active']);
+    $nbrPage = getNbrPage( $apprenants, $per_page);
+    $current_page = getCurrentPage($nbrPage);
+
 
     if(!isset($_SESSION['filtre_apprenant']) && !isset($_POST['filtre_apprenant'])){
         unset($_SESSION['filtre_apprenant']);
@@ -72,25 +73,17 @@
     // dd($apprenants);
 
 
-    
-    $apprenantsPaginate = listPaginate(PER_PAGE, $current_page, $apprenants);
-    
-    $first = "/app/1";
-    $previous = $current_page <= 1 ? "/app/1" : "/app/".$current_page-1;
-    $next = $current_page >= $nbrPage ? "/app/".$nbrPage : "/app/".$current_page+1;
-    $last = "/app/".$nbrPage;
-    
-    $range_end = $current_page * PER_PAGE;
-    $range_start = $range_end - PER_PAGE;
-    
-    if($current_page == $nbrPage){
-        $range_end = count($apprenants);
+    if(count($apprenants) == 0){
+        $apprenantsPaginate = [];
+    }else{
+        $apprenantsPaginate = listPaginate($per_page, $current_page, $apprenants);
     }
-    
 
     if (isset($_POST['details_promo']) && isset($_POST['idPromotion'])){
         if(!empty($_POST['idPromotion'])){
             $_SESSION['idPromotion'] = (integer) $_POST['idPromotion'];
         }
     }
+}
+
 ?>

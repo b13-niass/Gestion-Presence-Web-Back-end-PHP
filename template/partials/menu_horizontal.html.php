@@ -9,7 +9,7 @@
     <div class="mh-search-bar">
         <form action="" method="POST" style="width: 100%;">
             <input type="text" style="height: 6vh;" name="search_matricule" placeholder="Rechercher ...." id="" />
-            <input type="hidden" name="page" value="<?= $page ?>">
+            <input type="hidden" name="page" value="<?=$uri_?>">
         </form>
     </div>
 

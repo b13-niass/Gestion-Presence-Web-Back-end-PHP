@@ -14,6 +14,7 @@
             <?php
                 
                 foreach ($referentiels as $referentiel) {
+                   if($referentiel['status']):
             ?>
             <div class="item">
                 <div class="top">
@@ -22,15 +23,14 @@
                 <div class="img"></div>
                 <div class="bottom">
                     <span><?= $referentiel['libelle'] ?></span>
-                    <?php if($referentiel['status']): ?>
+
                     <span class="activer">Active</span>
-                    <?php else:; ?>
-                    <span class="desactiver">Désactiver</span>
-                    <?php endif; ?>
+
                 </div>
             </div>
             <?php
-                }
+             endif;
+            }
             ?>
         </div>
         <div class="form-referentiels">

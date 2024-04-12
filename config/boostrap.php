@@ -2,61 +2,49 @@
 
 define("WEBROOT", "http://www.cheikh.ibrahima.dieng:8013/projet");
 define("ENVIRONNEMENT", "DEV");
-define("FILES", "http://www.cheikh.ibrahima.dieng:8013/projet/model/files/");
+define("FILES", "/projet/model/files/");
 /**
  * Pagination
  */
 define('PER_PAGE', 10);
 
 
+
 if(ENVIRONNEMENT == "DEV"){
     require_once "../config/helpers.php";
+    
+    // dd(read_data_files('../model/files/apprenants.csv'));
 }else{
     include_once "../config/helpers.php";
 }
 
-
-$page = "login";
-if (isset($_GET['page']) && !empty($_GET['page'])){
-    if($_GET['page'] != "/"){
-        $resource = explode('/', $_GET['page']);
-        $page = $resource[1];
+/**
+ * Load Promotion
+ */
+function LoadPromotion() {
+    include "../model/promos.model.php";
+    $promotions = findAllPromotion();
+    foreach($promotions as $key => $promotion){
+        if($promotion['status'] == 1){
+            $_SESSION['promotion_active'] =  $key+1;
+        }
     }
 }
 
-
-if(isset($_POST['search_matricule'])){
-    $page = $_POST['page'];
+if(!isset($_SESSION['promotion_active'])){
+    LoadPromotion();
 }
-
-
-if(isset($_POST['filtre_apprenant'])){
-    $page = $_POST['page'];
-}
-
-$models = [
-    'app' => 'apprenants',
-    'pre' => 'presences',
-    'pro' => 'promos',
-    'ref' => 'referentiels'
-];
-
 
 $pages = [
-    'app' => 'list_apprenants',
-    'pre' => 'list_presences',
-    'pro' => 'list_promos',
-    'ref' => 'list_referentiels',
-    'create-pro1' => 'create_promo_1',
-    'create-pro2' => 'create_promo_2'
+    'app' => ['list_apprenants', 'apprenants'],
+    'pre' => ['list_presences', 'presences'],
+    'pro' => ['list_promos', 'promos'],
+    'ref' => ['list_referentiels', 'referentiels'],
+    'login' => ['login'],
+    'create-pro1' => ['create_promo_1'],
+    'create-pro2' => ['create_promo_2']
 ];
+$page = pageNameGenerate($_REQUEST,$pages)[0];
+$uri_ = pageNameGenerate($_REQUEST,$pages)[2]??"";
 
-
-if(array_key_exists($page, $pages)){
-    $page_styles = $pages[$page];
-}
-
-if(array_key_exists($page, $models)){
-    $model = $models[$page];
-    require_once "../model/$model.model.php";
-}
+// dd(getTodayDate());

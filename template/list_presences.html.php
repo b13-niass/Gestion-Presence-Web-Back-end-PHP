@@ -31,15 +31,25 @@
                         <?php
                             if(isset($_SESSION['filter_presence']['referentiels'])){
                                 $ref = (integer) $_SESSION['filter_presence']['referentiels'];
+                                foreach($les_ref_du_promos as $ref_promo):
+                                    if($ref_promo['status'] == 1):
                         ?>
-                        <option value="1" <?= $ref == 1 ? "selected" : "" ?>>Dev Web/mobile</option>
-                        <option value="2" <?= $ref == 2 ? "selected" : "" ?>>Référent Digital</option>
-                        <option value="3" <?= $ref == 3 ? "selected" : "" ?>>Developpement Data</option>
-                        <?php } else{?>
-                        <option value="1">Dev Web/mobile</option>
-                        <option value="2">Référent Digital</option>
-                        <option value="3">Developpement Data</option>
-                        <?php } ?>
+
+                        <option value="<?= $ref_promo['id'] ?>" <?= $ref == $ref_promo['id']? "selected" : "" ?>>
+                            <?= $ref_promo['libelle'] ?></option>
+
+                        <?php 
+                            endif;
+                            endforeach;
+                        } else{
+                            foreach($les_ref_du_promos as $ref_promo):
+                                if($ref_promo['status'] == 1):
+                        ?>
+                        <option value="<?= $ref_promo['id'] ?>"><?= $ref_promo['libelle'] ?></option>
+                        <?php
+                        endif;
+                        endforeach;
+                     } ?>
                     </select>
                     <div>
                         <?php
@@ -48,14 +58,15 @@
                         ?>
                         <input type="text" class="date" name="date" id="" value="<?= $date ?>" />
                         <?php } else{?>
-                        <input type="text" class="date" name="date" id="" placeholder="JJ-MM-AAAA" />
+                        <input type="text" class="date" name="date" id="" placeholder="JJ-MM-AAAA"
+                            value="<?= $_SESSION['filter_presence']['date'] ?>" />
                         <?php } ?>
 
                     </div>
-                    <button type="submit" name="search_presence">Rafraichir</button>
+                    <button type="submit" name="search_presence" style="cursor: pointer;">Rafraichir</button>
                 </form>
                 <form action="" method="post" style="width: 20%;display:flex;justify-content: end;">
-                    <button type="submit" name="all_presence" style="width: 30%;">All</button>
+                    <button type="submit" name="all_presence" value="1" style="width: 30%;cursor: pointer;">All</button>
                 </form>
             </div>
             <div class="tableau-head">
@@ -89,27 +100,18 @@
             <div class="tableau-footer">
                 <div class="per-page">
                     <span>Items per page</span>
-                    <select name="per-page" id="">
-                        <option value="" selected>10</option>
-                    </select>
+                    <form action="" method="POST">
+                        <input type="hidden" name="page" value="/pre">
+                        <select name="per_page_pre" onchange="this.form.submit()" id="">
+                            <option value="5" <?= $per_page == 5 ? 'selected' : '' ?>>5</option>
+                            <option value="10" <?= $per_page == 10 ? 'selected' : '' ?>>10</option>
+                            <option value="15" <?= $per_page == 15 ? 'selected' : '' ?>>15</option>
+                        </select>
+                    </form>
                 </div>
-                <div class="pagination">
-                    <span> <?= $range_start+1 ." - ". $range_end ?> of <?= count($presences )?></span>
-                    <div class="pagination-right">
-                        <a href="<?= $first ?>" class="pagination-link first-page 
-                        <?= $current_page == 1 ? 'disabled-link' : ''?> ">|<i class="fa-solid fa-chevron-left"></i></a>
-                        <a href="<?= $previous ?>"
-                            class=" pagination-link previous <?= $current_page == 1 ? 'disabled-link' : ''?>">
-                            <i class="fa-solid fa-chevron-left"></i></a>
-                        <span class="pagination-numbers"> <?= $current_page ?></span>
-                        <a href="<?= $next ?>"
-                            class="pagination-link next <?= $current_page == $nbrPage ? 'disabled-link' : ''?>"><i
-                                class="fa-solid fa-chevron-right"></i></a>
-                        <a href="<?= $last ?>"
-                            class="pagination-link last-page <?= $current_page == $nbrPage ? 'disabled-link' : ''?>"><i
-                                class="fa-solid fa-chevron-right"></i>|</a>
-                    </div>
-                </div>
+                <?php 
+                    genererPaginationTemplate($uri_, $current_page, $nbrPage,$per_page, $presences);
+                ?>
             </div>
         </div>
     </div>

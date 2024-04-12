@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="indication-promo">
-        <div>Promotion: <span>Promotion 6</span></div>
+        <div>Promotion: <span>Promotion <?= $prom ?></span></div>
         <div>Référentiel: <span>Dev Web/Mobile</span></div>
     </div>
 
@@ -57,8 +57,7 @@
                 <?php 
                 
                     // $idPromotion = (integer) $resource[2]; 
-                    foreach($apprenantsPaginate as $apprenant): 
-                        if($apprenant['idPromotion'] === $_SESSION['idPromotion']):    
+                    foreach($apprenantsPaginate as $apprenant):   
                 ?>
                 <div class="row">
                     <div class="col">
@@ -72,7 +71,6 @@
                     <div class="col"><span class="span-bleuf"></span></div>
                 </div>
                 <?php 
-                        endif;
                     endforeach; 
                 ?>
             </div>
@@ -80,31 +78,17 @@
                 <div class="per-page">
                     <span>Items per page</span>
                     <form action="" method="POST">
-                        <input type="hidden" name="page" value="app">
+                        <input type="hidden" name="page" value="/app">
                         <select name="per_page_app" onchange="this.form.submit()" id="">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
+                            <option value="5" <?= $per_page == 5 ? 'selected' : '' ?>>5</option>
+                            <option value="10" <?= $per_page == 10 ? 'selected' : '' ?>>10</option>
+                            <option value="15" <?= $per_page == 15 ? 'selected' : '' ?>>15</option>
                         </select>
                     </form>
                 </div>
-                <div class="pagination">
-                    <span> <?= $range_start+1 ." - ". $range_end ?> of <?= count($apprenants )?></span>
-                    <div class="pagination-right">
-                        <a href="<?= $first ?>" class="pagination-link first-page 
-                        <?= $current_page == 1 ? 'disabled-link' : ''?> ">|<i class="fa-solid fa-chevron-left"></i></a>
-                        <a href="<?= $previous ?>"
-                            class=" pagination-link previous <?= $current_page == 1 ? 'disabled-link' : ''?>">
-                            <i class="fa-solid fa-chevron-left"></i></a>
-                        <span class="pagination-numbers"> <?= $current_page ?></span>
-                        <a href="<?= $next ?>"
-                            class="pagination-link next <?= $current_page == $nbrPage ? 'disabled-link' : ''?>"><i
-                                class="fa-solid fa-chevron-right"></i></a>
-                        <a href="<?= $last ?>"
-                            class="pagination-link last-page <?= $current_page == $nbrPage ? 'disabled-link' : ''?>"><i
-                                class="fa-solid fa-chevron-right"></i>|</a>
-                    </div>
-                </div>
+                <?php 
+                    genererPaginationTemplate($uri_, $current_page, $nbrPage,$per_page, $apprenants);
+                ?>
             </div>
         </div>
     </div>

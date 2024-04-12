@@ -1,9 +1,11 @@
 <?php
-    session_start();
+    require_once "../model/$controller.model.php";
+
+if($uri_ == "ref"){
     unset($_SESSION['search_matricule']);
     $_SESSION['search_matricule'] = null;
     
-    $referentiels = findAllReferentiel();
+    $referentiels = findAllReferentiel($_SESSION['promotion_active']);
 
     if(!isset($_SESSION['search_matricule']) && !isset($_POST['search_matricule'])){
         unset($_SESSION['search_matricule']);
@@ -26,5 +28,7 @@
     if(isset($_SESSION['search_matricule']) && !isset($_POST['search_matricule'])){
         $referentiels = findAllReferentielSearch($_SESSION['search_matricule'], $referentiels);
     }
+
+}
 
 ?>

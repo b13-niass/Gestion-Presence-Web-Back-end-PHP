@@ -13,14 +13,14 @@
             </a>
         </div>
         <div class="menu-item">
-            <a href="/pro" class="<?= $page == "pro" ? "color-menu-item" : "" ?>">
-                <i class="promo-icon <?= $page == "pro" ? "promo-menu-item" : "" ?> "></i>
+            <a href="/pro" class="<?= $uri_ == "pro" ? "color-menu-item" : "" ?>">
+                <i class="promo-icon <?= $uri_ == "pro" ? "promo-menu-item" : "" ?> "></i>
                 Promos
             </a>
         </div>
         <div class="menu-item">
-            <a href="/ref" class="<?= $page == "ref" ? "color-menu-item" : "" ?>">
-                <i class="ref-icon <?= $page == "ref" ? "ref-menu-item" : "" ?>"></i>
+            <a href="/ref" class="<?= $uri_ == "ref" ? "color-menu-item" : "" ?>">
+                <i class="ref-icon <?= $uri_ == "ref" ? "ref-menu-item" : "" ?>"></i>
                 Réferentiels
             </a>
         </div>
@@ -31,14 +31,14 @@
             </a>
         </div>
         <div class="menu-item">
-            <a href="visiteurs">
-                <i class="visit-icon"></i>
+            <a href="/app" class="<?= $uri_ == "app" ? "color-menu-item" : "" ?>">
+                <i class="visit-icon <?= $uri_ == "app" ? "user-menu-item" : "" ?>"></i>
                 Visiteurs
             </a>
         </div>
         <div class="menu-item">
-            <a href="/pre" class="<?= $page == "pre" ? "color-menu-item" : "" ?>">
-                <i class="presence-icon <?= $page == "pre" ? "user-menu-item" : "" ?>"></i>
+            <a href="/pre" class="<?= $uri_ == "pre" ? "color-menu-item" : "" ?>">
+                <i class="presence-icon <?= $uri_ == "pre" ? "user-menu-item" : "" ?>"></i>
                 Presence
             </a>
         </div>
