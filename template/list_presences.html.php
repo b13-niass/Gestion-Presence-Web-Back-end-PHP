@@ -1,11 +1,19 @@
 <div class="right-middle">
     <div class="breadcrumbs">
-        <span>Presence</span>
+    <div>Presences : 
+        <a href="/pro" style="text-decoration: none; color:#009186;font-weight: bold;">
+            <span>
+                Promotion <?= $promotion_active != 0 ? $promotion_active : '_ _'  ?>
+            </span>
+        </a>
+    </div>
+
         <div>
             <span>Presence ></span>
             <span>Liste</span>
         </div>
     </div>
+
     <div class="content">
         <div class="tableau">
             <div class="tableau-titre">
@@ -57,9 +65,9 @@
                                 $date = $_SESSION['filter_presence']['date'];
                         ?>
                         <input type="text" class="date" name="date" id="" value="<?= $date ?>" />
-                        <?php } else{?>
+                        <?php } else{ //echo  $_SESSION['filter_presence']['date'];?>
                         <input type="text" class="date" name="date" id="" placeholder="JJ-MM-AAAA"
-                            value="<?= $_SESSION['filter_presence']['date'] ?>" />
+                            value="<?= $_SESSION['filter_presence']['date']?? '' ?>" />
                         <?php } ?>
 
                     </div>
@@ -92,7 +100,7 @@
                     <div class="col"><?= getReferentielName($presence['referentiel']) ?></div>
                     <div class="col"><span class="a_l_heure"><?= $presence['heure_arrivee'] ?></span></div>
                     <div class="col"><span
-                            class="<?= $presence['etat'] === 1 ? 'present' : 'absent'  ?>"><?= $presence['etat'] === 1 ? 'Présent' : 'Absent'  ?></span>
+                            class="<?= (integer) $presence['etat'] === 1 ? 'present' : 'absent'  ?>"><?= (integer) $presence['etat'] === 1 ? 'Présent' : 'Absent'  ?></span>
                     </div>
                 </div>
                 <?php endforeach; ?>

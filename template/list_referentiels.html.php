@@ -3,7 +3,13 @@
 ?>
 <div class="right-middle">
     <div class="breadcrumbs">
-        <span>Référentiels</span>
+        <div>Référentiels : 
+        <a href="/pro" style="text-decoration: none; color:#009186;font-weight: bold;">
+            <span>
+                Promotion <?= $promotion_active != 0 ? $promotion_active : '_ _'  ?>
+            </span>
+        </a>
+    </div>
         <div>
             <span>Référentiels ></span>
             <span>Liste</span>

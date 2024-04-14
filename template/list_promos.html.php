@@ -1,6 +1,12 @@
 <div class="right-middle">
     <div class="breadcrumbs">
-        <span>Promotions</span>
+    <div> 
+        <a href="/pro" style="text-decoration: none; color:#009186;font-weight: bold;">
+            <span>
+                Promotion <?= $promotion_active != 0 ? $promotion_active : '_ _'  ?>
+            </span>
+        </a>
+    </div>
         <div>
             <span>Promos ></span>
             <span>Liste</span>
@@ -30,7 +36,7 @@
             </div>
             <div class="tableau-body">
                 <?php
-               
+              
                 foreach ($promotionsPaginate as $key=>$promotion) {
             ?>
                 <div class="row">
@@ -42,10 +48,12 @@
                     <div class="col"><?= $promotion['dateFin'] ?></div>
                     <div class="col">
                         <form action="" method="post">
-                            <input type="hidden" name="idPromotion" value="<?= $key+1 ?>">
+                            <input type="hidden" name="idPromotion" value="<?= $promotion['number'] ?>">
                             <input type="hidden" name="page" value="/pro">
-                            <button type="submit" name="activer_promotion"
-                                class="btn-primary  <?=  $prom == $key+1 ? "disabled-btn" : '' ?>">Activer</button>
+                            <input type="checkbox" name="activer_promotion"
+                                class="to-check" 
+                                <?= $promotion_active == (integer)$promotion['number'] ? 'checked' : ''?> 
+                                onchange="this.form.submit()">
                         </form>
                     </div>
                 </div>
@@ -65,6 +73,8 @@
                 </div>
                 <?php 
                     genererPaginationTemplate($uri_, $current_page, $nbrPage,$per_page, $promotions);
+                
+              
                 ?>
             </div>
         </div>

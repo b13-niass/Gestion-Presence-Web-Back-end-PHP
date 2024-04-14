@@ -19,6 +19,8 @@
 }
 
 .left {
-  position: relative !important;
-  top: -209px !important;
+  position: sticky;
+  top: 0px;
+  left: 0;
+  margin-bottom: auto;
 }

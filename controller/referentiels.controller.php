@@ -4,6 +4,7 @@
 if($uri_ == "ref"){
     unset($_SESSION['search_matricule']);
     $_SESSION['search_matricule'] = null;
+    $promotion_active = $_SESSION['promotion_active'];
     
     $referentiels = findAllReferentiel($_SESSION['promotion_active']);
 

@@ -29,6 +29,12 @@ function pageNameGenerate(array $request,array $pages){
     return $result;
 }
 
+function vdp($data){
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
+}
+
 function dd($data){
     echo "<pre >";
     var_dump($data);
@@ -40,7 +46,7 @@ function dd($data){
  * Debut Pagination Function
  */
 
-function listPaginate($per_page, $page_number=1, $listes){
+function listPaginate($per_page, $listes, $page_number=1){
     
     $nbrPage = ceil(count($listes)/$per_page);
     $fin = $page_number * $per_page;
@@ -127,18 +133,6 @@ $keys = [
 'date'
 ];
 
-function read_data_files($file_name,$keys = null){
-$results = null;
-
-
-}
-
-function write_data_files($file_name, $mode){
-
-
-}
-
-
 function getTodayDate(){
     return date('d-m-Y');
 }
@@ -151,3 +145,7 @@ function getTodayDate(){
 // $timestamp = strtotime($dateString);
 
 // var_dump($formattedDate === $formattedDate2);
+
+
+// <button type="submit" name="activer_promotion"
+// class="btn-primary  <?=  //$prom == $key+1 ? "disabled-btn" : '' ?/>">Activer</button> 

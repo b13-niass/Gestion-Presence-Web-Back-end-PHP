@@ -8,12 +8,9 @@ define("FILES", "/projet/model/files/");
  */
 define('PER_PAGE', 10);
 
-
-
 if(ENVIRONNEMENT == "DEV"){
     require_once "../config/helpers.php";
-    
-    // dd(read_data_files('../model/files/apprenants.csv'));
+    require_once dirname(__DIR__)."/orm/file.csv.php";
 }else{
     include_once "../config/helpers.php";
 }

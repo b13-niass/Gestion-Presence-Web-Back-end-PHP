@@ -75,23 +75,21 @@
 }
 
 .color-menu-item {
-  background-color: var(--couleur-secondaire)!important;
-  color: white!important;
+  background-color: var(--couleur-secondaire) !important;
+  color: white !important;
 }
 
 .promo-menu-item {
-  background-image: url("../../icons/promo-w.png")!important;
+  background-image: url("../../icons/promo-w.png") !important;
 }
 
 .ref-menu-item {
-  background-image: url("../../icons/ref-w.png")!important;
+  background-image: url("../../icons/ref-w.png") !important;
 }
 
 .user-menu-item {
-  background-image: url("../../icons/user-w.png")!important;
+  background-image: url("../../icons/user-w.png") !important;
 }
-
-
 
 .menu-item a {
   display: flex;
@@ -185,7 +183,7 @@
 }
 
 .indication-promo > div span {
-  color: green;
+  color: var(--couleur-secondaire);
 }
 
 .burger-toggle {
@@ -325,19 +323,82 @@
 }
 
 .profil-name {
-  height: 50%;
+  height: 50% !important;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
 }
 
 .profil-name i {
   /* rotate: 90deg; */
-  margin-left: 5%;
-  font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.5);
+  margin-left: 5% !important;
+  font-size: 0.9rem !important;
+  color: rgba(0, 0, 0, 0.5) !important;
 }
+
+/*
+* Dropdown Logout
+*/
+
+/* Style the dropdown button */
+.dropbtn {
+  /* background-color: #4caf50; */
+  /* color: white; */
+  /* padding: 16px; */
+  padding-bottom: 5px;
+  /* font-size: 16px; */
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--couleur-secondaire);
+  color: white;
+  min-width: 110px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  /* background-color: #f1f1f1; */
+  background-color: var(--couleur-secondaire);
+  color: white;
+  font-weight: bold;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  /* background-color: #3e8e41; */
+}
+
+/*
+* Dropdown Logout
+*/
 
 .footer {
   background-color: white;

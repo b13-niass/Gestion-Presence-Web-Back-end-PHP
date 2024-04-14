@@ -8,7 +8,7 @@ if($uri_ == "app"){
     $_SESSION['filtre_apprenant'] = null;
     $_SESSION['search_matricule'] = null;
     
-    $prom = $_SESSION['promotion_active'];
+    $promotion_active = $_SESSION['promotion_active'];
     if(!isset($_SESSION['per_page_app'])){
         $_SESSION['per_page_app'] = 10;
     }
@@ -22,6 +22,9 @@ if($uri_ == "app"){
 
     $apprenants = findAllApprenant($_SESSION['promotion_active']);
     $nbrPage = getNbrPage( $apprenants, $per_page);
+    if($nbrPage == 0){
+        $nbrPage = 1;
+    }
     $current_page = getCurrentPage($nbrPage);
 
 
@@ -34,17 +37,17 @@ if($uri_ == "app"){
     }
     
     if(!isset($_SESSION['filtre_apprenant']) && isset($_POST['filtre_apprenant']) && !empty($_POST['filtre_apprenant'])){
-        $apprenants = findAllApprenantFiltre($_POST['filtre_apprenant'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_POST['filtre_apprenant']);
         $_SESSION['filtre_apprenant'] = $_POST['filtre_apprenant'];
     }
     
     if(isset($_SESSION['filtre_apprenant']) && isset($_POST['filtre_apprenant']) && !empty($_POST['filtre_apprenant'])){
-        $apprenants = findAllApprenantFiltre($_POST['filtre_apprenant'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_POST['filtre_apprenant']);
         $_SESSION['filtre_apprenant'] = $_POST['filtre_apprenant'];
     }
     
     if(isset($_SESSION['filtre_apprenant']) && !isset($_POST['filtre_apprenant'])){
-        $apprenants = findAllApprenantFiltre($_SESSION['filtre_apprenant'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_POST['filtre_apprenant']);
     }
     
 
@@ -57,17 +60,17 @@ if($uri_ == "app"){
     }
 
     if(!isset($_SESSION['search_matricule']) && isset($_POST['search_matricule']) && !empty($_POST['search_matricule'])){
-        $apprenants = findAllApprenantFiltre($_POST['search_matricule'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_POST['search_matricule']);
         $_SESSION['search_matricule'] = $_POST['search_matricule'];
     }
 
     if(isset($_SESSION['search_matricule']) && isset($_POST['search_matricule']) && !empty($_POST['search_matricule'])){
-        $apprenants = findAllApprenantFiltre($_POST['search_matricule'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_POST['search_matricule']);
         $_SESSION['search_matricule'] = $_POST['search_matricule'];
     }
 
     if(isset($_SESSION['search_matricule']) && !isset($_POST['search_matricule'])){
-        $apprenants = findAllApprenantFiltre($_SESSION['search_matricule'], $apprenants);
+        $apprenants = findAllApprenantFiltre($apprenants, $_SESSION['search_matricule']);
     }
 
     // dd($apprenants);
@@ -76,7 +79,7 @@ if($uri_ == "app"){
     if(count($apprenants) == 0){
         $apprenantsPaginate = [];
     }else{
-        $apprenantsPaginate = listPaginate($per_page, $current_page, $apprenants);
+        $apprenantsPaginate = listPaginate($per_page, $apprenants,$current_page);
     }
 
     if (isset($_POST['details_promo']) && isset($_POST['idPromotion'])){

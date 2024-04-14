@@ -9,7 +9,13 @@
         </div>
     </div>
     <div class="indication-promo">
-        <div>Promotion: <span>Promotion <?= $prom ?></span></div>
+        <div>Promotion:
+             <a href="/pro" style="text-decoration: none; color:#009186;font-weight: bold;">
+                <span>
+                    Promotion <?= $promotion_active != 0 ? $promotion_active : '_ _' ?>
+                </span>
+            </a>
+        </div>
         <div>Référentiel: <span>Dev Web/Mobile</span></div>
     </div>
 

@@ -20,9 +20,18 @@
         <div class="photo-profil"></div>
         <div class="profil">
             <div class="profil-role">SUPER ADMIN</div>
-            <div class="profil-name">
+            <!-- <div class="profil-name">
                 Admin Admin
                 <i class="fa fa-angle-down"></i>
+            </div> -->
+            <div class="dropdown profil-name">
+            <button class="dropbtn">
+            Admin Admin
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Logout</a>
+            </div>
             </div>
         </div>
     </div>

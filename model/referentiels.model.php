@@ -1,102 +1,20 @@
 <?php
-
     function findAllReferentiel($promotion){
-        $referentiels = [
-        [
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Dev Web/mobile',
-                'status' => 1,
-                'id' => 1
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Referentiel Digital',
-                'status' => 1,
-                'id' => 2
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Aws',
-                'status' => 1,
-                'id' => 4
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Hackeuse',
-                'status' => 0,
-                'id' => 5
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Developpement Data',
-                'status' => 1,
-                'id' => 3
-            ],
-            'idPromotion' => 6
-        ],
-        [
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Dev Web/mobile',
-                'status' => 1,
-                'id' => 1
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Referentiel Digital',
-                'status' => 1,
-                'id' => 2
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Aws',
-                'status' => 0,
-                'id' => 4
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Developpement Data',
-                'status' => 1,
-                'id' => 3
-            ],
-            'idPromotion' => 5
-        ],
-        [
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Dev Web/mobile',
-                'status' => 1,
-                'id' => 1
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Referentiel Digital',
-                'status' => 1,
-                'id' => 2
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Hackeuse',
-                'status' => 1,
-                'id' => 5
-            ],
-            [
-                'image' => './img/ref.jpg',
-                'libelle' => 'Developpement Data',
-                'status' => 1,
-                'id' => 3
-            ],
-            'idPromotion' => 4
-        ]
-    ];
+        $ref_array_keys = [
+            'id',
+            'libelle',
+            'promo',
+            'image',
+            'status'
+        ];
 
-    foreach($referentiels as $referentiel_list){
-        if($referentiel_list['idPromotion'] == $promotion){
-           return array_slice($referentiel_list, 0, -1);
-        }
-    }
-    return [];
+        $referentiels = read_data_files('referentiels',  $ref_array_keys);
+        $referentiels =  array_filter($referentiels, 
+        fn($ref)=> (integer) $ref['promo'] === $promotion);
+
+        $referentiels = array_values($referentiels);
+        
+        return $referentiels;
     }
 
 

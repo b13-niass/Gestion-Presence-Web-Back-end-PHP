@@ -7,3 +7,13 @@
   (max-width: 1200px);
 @import "./1201_more/list_presences.css" screen and (min-width: 1201px);
 
+.container {
+  height: auto !important;
+}
+
+.left {
+  position: sticky;
+  top: 0px;
+  left: 0;
+  margin-bottom: auto;
+}
