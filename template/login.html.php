@@ -9,7 +9,7 @@
             </div>
             <span class="items item4"> Password <span>*</span> </span>
             <div class="items item5">
-                <input type="text" name="password" placeholder="Enter your password *" />
+                <input type="password" name="password" placeholder="Enter your password *" />
             </div>
         </div>
         <div class="items item6">
@@ -19,9 +19,10 @@
         <div class="items item7">
             <a href="">Mot de passe Oublié ?</a>
         </div>
+        <!-- <input type="hidden" name="page" value="/pro"> -->
         <div class="items item8">
-            <!-- <button type="submit">Log In</button> -->
-            <a href="/pro">Log In</a>
+            <button type="submit" name="login">Log In</button>
+            <!-- <a href="/pro">Log In</a> -->
         </div>
     </form>
 </div>

@@ -19,20 +19,23 @@
     <div class="mh-profil">
         <div class="photo-profil"></div>
         <div class="profil">
-            <div class="profil-role">SUPER ADMIN</div>
+            <div class="profil-role"><?= $_SESSION['user_login']['role'] == 1 ? 'Admin' : 'Apprenant' ?></div>
             <!-- <div class="profil-name">
                 Admin Admin
                 <i class="fa fa-angle-down"></i>
             </div> -->
             <div class="dropdown profil-name">
             <button class="dropbtn">
-            Admin Admin
+            <?= $_SESSION['user_login']['nom']." ".$_SESSION['user_login']['prenom']?>
                 <i class="fa fa-angle-down"></i>
             </button>
-            <div class="dropdown-content">
-                <a href="#">Logout</a>
-            </div>
-            </div>
+            <form action="/login" method="POST">
+                <div class="dropdown-content">
+                    <!-- <input type="hidden" name="page" value="login"> -->
+                    <button type="submit" name="logout">Logout</button>
+                </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -16,4 +16,9 @@
         // dd($promotions);
         return $promotions;
     }
+
+    function getLastPromotion($promotions){
+        return end($promotions);
+
+    }
 ?>

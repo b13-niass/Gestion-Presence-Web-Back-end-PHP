@@ -5,19 +5,23 @@ function pageNameGenerate(array $request,array $pages){
     $result = null;
     // dd($request);
 
-    if(isset($request['search_matricule']) || isset($request['filtre_apprenant'])){
-        $uri = $request['page'];
+    if(!isset($_SESSION['user_login']) || empty($_SESSION['user_login'])){
+        $uri = "login";
     }else{
-        if (isset($request['page']) && !empty($request['page'])){
-            if($request['page'] != "/"){
-                $resource = explode('/', $request['page']);
-                // dd($resource);   
-                $uri = $resource[1];
-                    // dd($uri);
-                }
+        if(isset($request['search_matricule']) || isset($request['filtre_apprenant'])){
+            $uri = $request['page'];
+        }else{
+            if (isset($request['page']) && !empty($request['page'])){
+                if($request['page'] != "/"){
+                    $resource = explode('/', $request['page']);
+                    // dd($resource);   
+                    $uri = $resource[1];
+                        // dd($uri);
+                    }
+            }
         }
     }
-    
+    // dd($uri);
     if(array_key_exists($uri, $pages)){
         $result= $pages[$uri];
         array_push($result, $uri);

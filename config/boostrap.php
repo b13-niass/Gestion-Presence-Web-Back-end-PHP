@@ -21,11 +21,8 @@ if(ENVIRONNEMENT == "DEV"){
 function LoadPromotion() {
     include "../model/promos.model.php";
     $promotions = findAllPromotion();
-    foreach($promotions as $key => $promotion){
-        if($promotion['status'] == 1){
-            $_SESSION['promotion_active'] =  $key+1;
-        }
-    }
+    $promo = getLastPromotion($promotions);
+    $_SESSION['promotion_active'] =  (integer) $promo['number'];
 }
 
 if(!isset($_SESSION['promotion_active'])){
