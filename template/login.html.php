@@ -1,3 +1,4 @@
+<?php //dd($_SESSION) ?>
 <div class="loginForm">
     <div class="logo"></div>
     <form action="" method="post">

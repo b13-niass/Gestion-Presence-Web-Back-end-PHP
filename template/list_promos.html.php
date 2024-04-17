@@ -50,8 +50,7 @@
                         <form action="" method="post">
                             <input type="hidden" name="idPromotion" value="<?= $promotion['number'] ?>">
                             <input type="hidden" name="page" value="/pro">
-                            <input type="checkbox" name="activer_promotion"
-                                class="to-check" 
+                            <input type="checkbox" name="activer_promotion" class="to-check" 
                                 <?= $promotion_active == (integer)$promotion['number'] ? 'checked' : ''?> 
                                 onchange="this.form.submit()">
                         </form>

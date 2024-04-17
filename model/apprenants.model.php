@@ -11,6 +11,7 @@
             'genre',
             'telephone',
             'promo',
+            'referentiel',
         ];
         $apprenants = read_data_files('apprenants',  $app_array_keys);
 

@@ -17,20 +17,20 @@
             <form action="" method="post">
                 <div class="form-intput">
                     <span>libelle</span>
-                    <input class="lib" type="text" placeholder="libelle" name="" id="" />
+                    <input class="lib" type="text" placeholder="libelle" name="libelle" id="" />
                 </div>
                 <div class="form-intput">
                     <span>Date Début</span>
-                    <input type="text" placeholder="JJ/MM/AAAA" name="" id="" />
+                    <input type="text" placeholder="JJ-MM-AAAA" name="dateDebut" id="" />
                 </div>
                 <div class="form-intput">
                     <span>Date Fin</span>
-                    <input type="text" placeholder="JJ/MM/AAAA" name="" id="" />
+                    <input type="text" placeholder="JJ-MM-AAAA" name="dateFin" id="" />
                 </div>
                 <div class="form-intput">
-                    <a href="/create-pro2">Ajouter Référentiel (s)</a>
+                    <button type="submit" name="ajouter_ref">Ajouter Référentiel (s)</button>
 
-                    <a href="#">Créer Promotion</a>
+                    <button type="submit" name="creer_promo">Créer Promotion</b>
                 </div>
             </form>
             <span>Référentiels</span>

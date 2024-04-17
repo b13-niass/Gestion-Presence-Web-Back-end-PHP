@@ -38,7 +38,10 @@
     }
 
     function matriculeValidator(){
+
     }
 
-    
+    function formatDateToEnglish($dateString){
+        return date('Y-m-d', strtotime($dateString));
+    }
 ?>

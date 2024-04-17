@@ -1,6 +1,4 @@
-<?php 
-// $referentiels = findAllReferentiel(); 
-?>
+
 <div class="right-middle">
     <div class="breadcrumbs">
         <div>Référentiels : 
@@ -40,17 +38,32 @@
             ?>
         </div>
         <div class="form-referentiels">
-            <form action="" method="post">
+            <form action="/ref" method="post" enctype="multipart/form-data">
                 <span>Nouveau Référentiel</span>
                 <div class="form-input">
                     <span>Libelle</span>
-                    <input type="text" name="" id="" placeholder="Entrer le libelle" />
+                    <input type="text" name="libelle" id="" placeholder="Entrer le libelle" />
                 </div>
                 <div class="form-input">
-                    <span>Libelle</span>
-                    <input type="text" name="" id="" placeholder="Entrer la description" />
+                    <span>Description</span>
+                    <input type="text" name="desc" id="" placeholder="Entrer la description" />
                 </div>
-                <button type="submit">Enregistrer</button>
+                <div class="form-input-file">
+                    <span>Ajouter Image</span>
+                    <input type="file" name="image_referentiel" id="fileInput" id=""/>
+                </div>
+                <div class="form-input-file input-switch">
+                <label class="switch">
+                    <input type="checkbox" value="<?= $_SESSION['promotion_active'] ?>" name="promo_to_ref">
+                    <span class="slider round"></span>
+                </label>
+                <span style="font-size:0.7rem;" class="switch-text">Ajouter à la promo active</span>
+                </div>
+                <button type="submit" name="add_new_referentiel">Enregistrer</button>
+                <?php if($error_add_referentiels == 0){ ?>
+                <span style="color: darkred;font-size: 0.6rem;text-align: center;padding-top: 1px;">erreur lors de l'ajout</span>
+                    <?php }?>
+                       
             </form>
         </div>
     </div>

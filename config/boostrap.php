@@ -21,7 +21,7 @@ if(ENVIRONNEMENT == "DEV"){
 function LoadPromotion() {
     include "../model/promos.model.php";
     $promotions = findAllPromotion();
-    $promo = getLastPromotion($promotions);
+    $promo = getActivePromotion($promotions);
     $_SESSION['promotion_active'] =  (integer) $promo['number'];
 }
 
@@ -35,8 +35,8 @@ $pages = [
     'pro' => ['list_promos', 'promos'],
     'ref' => ['list_referentiels', 'referentiels'],
     'login' => ['login'],
-    'create-pro1' => ['create_promo_1'],
-    'create-pro2' => ['create_promo_2']
+    'create-pro1' => ['create_promo_1', 'promos'],
+    'create-pro2' => ['create_promo_2', 'promos']
 ];
 $page = pageNameGenerate($_REQUEST,$pages)[0];
 $uri_ = pageNameGenerate($_REQUEST,$pages)[2]??"";

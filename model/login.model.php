@@ -10,11 +10,11 @@ function findAllUser($promotion){
         'promo',
     ];
     $users = read_data_files('utilisateurs',  $user_array_keys);
-
+    // dd($promotion);
     $users = array_filter($users, function($pro) use($promotion){
         return (int) $pro['promo'] == (int)$promotion;
     });
-
+    
     $users = array_values($users);
    
     return $users;
