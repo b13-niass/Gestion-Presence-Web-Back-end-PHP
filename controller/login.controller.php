@@ -5,19 +5,39 @@ $promotion_active = $_SESSION['promotion_active'];
 $users = findAllUser($promotion_active);
 // 
 
+$error_login = [
+    'email_required' => 'none',
+    'pwd_required' => 'none',
+    'email_invalid' => 'none',
+    'email_pwd_error' => 'none'
+];
+
 if(isset($_POST['login'])){
-    if(isset($_POST['email']) && !empty($_POST['email']) && 
-    isset($_POST['password']) && !empty($_POST['password'])){
+    if(isset($_POST['email']) && !empty($_POST['email'])){ 
         extract($_POST);
-       
-        $user = findUser($users, ['email' => $email,'password'=> $password]);
-        
-        if(count($user) > 0){
-            $_SESSION['user_login'] = $user[0];
-            header("Location: /pro");
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        if($email){
+            if(isset($_POST['password']) && !empty($_POST['password'])){
+            
+                $user = findUser($users, ['email' => $email,'password'=> $password]);
+                
+                if(count($user) > 0){
+                    $_SESSION['user_login'] = $user[0];
+                    header("Location: /pro", true, 301);
+                }else{
+                    // header("Location: /login", true, 301);
+                    $error_login['email_pwd_error'] = 'flex';
+                }
+            }
         }else{
-            header("Location: /login");
+            $error_login['email_invalid'] = 'block';
         }
+
+    }else{
+        if(!isset($_POST['password'])|| empty($_POST['password'])){
+            $error_login['pwd_required'] = 'block';
+        }
+        $error_login['email_required'] = 'block';
     }
 }
 
@@ -30,5 +50,5 @@ if(isset($_POST['logout'])){
     $_SESSION['filter_presence'] = null;
     $_SESSION['search_matricule'] = null;
     // session_destroy();
-    header("Location: /login");
+    header("Location: /login",true, 301);
 }

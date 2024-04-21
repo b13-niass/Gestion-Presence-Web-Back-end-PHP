@@ -3,6 +3,7 @@
     if(!isset($_SESSION["user_login"]) || empty($_SESSION["user_login"])){
         require_once "../controller/login.controller.php";
         require_once "../template/login.html.php";
+        // header("Location: /login", true, 301);
     }else{
         if($page != "404"){
         
