@@ -18,16 +18,31 @@
                 <div class="form-intput">
                     <span>libelle</span>
                     <input class="lib" type="text" placeholder="libelle" name="libelle" id="" />
+                    <i style="font-size: 0.7rem;color:darkred;display:<?= $resultCreationPromo['libelle_req'] ?>">
+                        Le libellé est obligatoire
+                    </i>
+                    <i style="font-size: 0.7rem;color:darkred;display:<?= $resultCreationPromo['promo_exist'] ?>">
+                        La promo existe déjà
+                    </i>
                 </div>
                 <div class="form-intput">
                     <span>Date Début</span>
                     <input type="text" placeholder="JJ-MM-AAAA" name="dateDebut" id="" />
+                    <i style="font-size: 0.7rem;color:darkred;display:<?= $resultCreationPromo['dateDebut_req'] ?>">
+                        La date de début est obligatoire
+                    </i>
                 </div>
                 <div class="form-intput">
                     <span>Date Fin</span>
                     <input type="text" placeholder="JJ-MM-AAAA" name="dateFin" id="" />
+                    <i style="font-size: 0.7rem;color:darkred;display:<?= $resultCreationPromo['dateFin_req'] ?>">
+                        La date de fin est obligatoire
+                    </i>
                 </div>
-                <div class="form-intput">
+                <i style="text-align: center;font-size: 0.7rem;color:darkred;width:100%;display:<?= $resultCreationPromo['dateDiffInvalide'] ?>">
+                        L'intervall entre date de début et date de fin doit être >= 4mois 
+                </i>
+                <div class="form-intput btn-create">
                     <button type="submit" name="ajouter_ref">Ajouter Référentiel (s)</button>
 
                     <button type="submit" name="creer_promo">Créer Promotion</b>

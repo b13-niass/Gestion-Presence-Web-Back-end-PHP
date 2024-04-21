@@ -44,48 +44,67 @@
    }
 
    if($uri_ == "create-pro1"){
+        $resultCreationPromo = [
+            'libelle_req' => 'none',
+            'dateDebut_req' => 'none',
+            'dateFin_req' => 'none',
+            'dateDiffInvalide' => 'none',
+            'promo_exist' => 'none'
+        ];
 
-        function createPromotion($request){
+        function createPromotion($request, $resultCreationPromo){
             if(isset($request['creer_promo'])){
-                if(isset($request['libelle'], $request['dateDebut'], $request['dateFin'])){
-                        if(!empty($request['libelle']) &&
-                        !empty($request['dateDebut']) &&
-                        !empty($request['dateFin'])){
-                            extract($request);
-                            if(is_bool(ifExistPromo($libelle))){
-                                $promotions = findAllPromotion();
-                                $number = (int) explode(' ', $libelle)[1];
-                                $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
-                                date_create(formatDateToEnglish($dateFin)));
-                                if((int)$diff->format("%R%m") >= 4){
-                                    $promo = [
-                                        'libelle' => $libelle,
-                                        'dateDebut'=> formatDateToEnglish($dateDebut),
-                                        'dateFin' => formatDateToEnglish($dateFin),
-                                        'number' => $number,
-                                        'statut'=> 0
-                                    ];
-            
-                                    array_push($promotions, $promo);
-                                    return writePromotions($promotions);
+                if(isset($request['libelle']) && !empty($request['libelle'])){
+                    
+                        if(isset($request['dateDebut']) && !empty($request['dateDebut'])){
+                            if(isset($request['dateFin']) && !empty($request['dateFin'])){
+                                extract($request);
+                                $libelle = strtolower(trim($libelle));
+                                if(is_bool(ifExistPromo($libelle))){
+                                    $promotions = findAllPromotion();
+                                    $number = (int) explode(' ', $libelle)[1];
+                                    $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
+                                    date_create(formatDateToEnglish($dateFin)));
+                                    if((int)$diff->format("%R%m") >= 4){
+                                        $promo = [
+                                            'libelle' => $libelle,
+                                            'dateDebut'=> formatDateToEnglish($dateDebut),
+                                            'dateFin' => formatDateToEnglish($dateFin),
+                                            'number' => $number,
+                                            'statut'=> 0
+                                        ];
+                
+                                        array_push($promotions, $promo);
+                                        return writePromotions($promotions);
 
+                                    }else{
+                                        $resultCreationPromo['dateDiffInvalide'] = 'block';
+                                    }
                                 }else{
-                                    // dd(2);
-                                    return 2;
+                                    $resultCreationPromo['promo_exist'] = 'block';
                                 }
+                            }else{
+                                $resultCreationPromo['dateFin_req'] = 'block';
+                            }
+
                         }else{
-                            // dd(2);
-                            return 2;
+                            if(!isset($request['dateFin']) || empty($request['dateFin'])){
+                                $resultCreationPromo['dateFin_req'] = 'block';
+                            }
+                            $resultCreationPromo['dateDebut_req'] = 'block';
                         }
-                    }else{
-                        // dd(2);
-                        return 2;
-                    }
+
                 }else{
-                    // dd(2);
-                    return 1;
+                    if(!isset($request['dateDebut']) || empty($request['dateDebut'])){
+                        $resultCreationPromo['dateDebut_req'] = 'block';
+                    }
+                    if(!isset($request['dateFin']) || empty($request['dateFin'])){
+                        $resultCreationPromo['dateFin_req'] = 'block';
+                    }
+                    $resultCreationPromo['libelle_req'] = 'block';
                 }
             }
+            return $resultCreationPromo;
         }
         function ajouterReferentiel($request){
         if(isset($request['ajouter_ref'])){
@@ -140,8 +159,17 @@
 
        }
 
-        $resultCreationPromo = createPromotion($_REQUEST);
-
+        $resultCreationPromo = createPromotion($_REQUEST, $resultCreationPromo);
+        // dd($resultCreationPromo);
+        if(is_bool($resultCreationPromo)){
+            $resultCreationPromo = [
+                'libelle_req' => 'none',
+                'dateDebut_req' => 'none',
+                'dateFin_req' => 'none',
+                'dateDiffInvalide' => 'none',
+                'promo_exist' => 'none'
+            ];
+        }
         $resultAjouterReferentiel= ajouterReferentiel($_REQUEST);
 
       
