@@ -37,7 +37,8 @@ $pages = [
     'ref' => ['list_referentiels', 'referentiels'],
     'login' => ['login'],
     'create-pro1' => ['create_promo_1', 'promos'],
-    'create-pro2' => ['create_promo_2', 'promos']
+    'create-pro2' => ['create_promo_2', 'promos'],
+    'event' => ['list_evenements', 'evenements']
 ];
 $page = pageNameGenerate($_REQUEST,$pages)[0];
 $uri_ = pageNameGenerate($_REQUEST,$pages)[2]??"";

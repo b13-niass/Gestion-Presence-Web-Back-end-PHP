@@ -17,3 +17,11 @@
   left: 0;
   margin-bottom: auto;
 }
+
+.right {
+  min-height: 100vh;
+}
+
+.right-middle {
+  min-height: 80vh;
+}

@@ -56,6 +56,6 @@ div {
 .disabled-link {
   pointer-events: none;
   cursor: default;
-  color: gray;
+  color: gray !important;
   text-decoration: none;
 }
