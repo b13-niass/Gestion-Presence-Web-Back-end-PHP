@@ -17,13 +17,15 @@
         <i class="fa-regular fa-calendar"></i>20 March 2024
     </div>
     <div class="mh-profil">
-        <div class="photo-profil"></div>
+        <div class="photo-profil">
+        <img src="/projet/public/img/<?= $_SESSION['user_login']['image'] ?>" style="
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        ">
+        </div>
         <div class="profil">
             <div class="profil-role"><?= $_SESSION['user_login']['role'] == 1 ? 'Admin' : 'Apprenant' ?></div>
-            <!-- <div class="profil-name">
-                Admin Admin
-                <i class="fa fa-angle-down"></i>
-            </div> -->
             <div class="dropdown profil-name">
             <button class="dropbtn">
             <?= $_SESSION['user_login']['nom']." ".$_SESSION['user_login']['prenom']?>
@@ -31,7 +33,6 @@
             </button>
             <form action="/login" method="POST">
                 <div class="dropdown-content">
-                    <!-- <input type="hidden" name="page" value="login"> -->
                     <button type="submit" name="logout">Logout</button>
                 </div>
                 </div>

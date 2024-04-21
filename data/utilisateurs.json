@@ -5,7 +5,8 @@
     "prenom": "admin1",
     "password": "$2y$10$jRel9hM8Ojs5XFQTk7EAw.Ke9T5rczH343KLCMKmDIHWhBNRepVwe",
     "role": "1",
-    "promo": "6"
+    "promo": "6",
+    "image": "photo3.png"
   },
   {
     "email": "admin2@odc.com",
@@ -13,7 +14,8 @@
     "prenom": "admin2",
     "password": "$2y$10$.Fmet1GwpmYF1bwCEpBKOeB8FfPMr86LIPq0en/2EMlU4H0CXIzAW",
     "role": "1",
-    "promo": "5"
+    "promo": "5",
+    "image": "photo3.png"
   },
   {
     "email": "admin3@odc.com",
@@ -21,7 +23,8 @@
     "prenom": "admin3",
     "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
-    "promo": "4"
+    "promo": "4",
+    "image": "photo3.png"
   },
   {
     "email": "admin4@odc.com",
@@ -29,7 +32,8 @@
     "prenom": "admin4",
     "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
-    "promo": "3"
+    "promo": "3",
+    "image": "photo3.png"
   },
   {
     "email": "admin5@odc.com",
@@ -37,7 +41,8 @@
     "prenom": "admin5",
     "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
-    "promo": "2"
+    "promo": "2",
+    "image": "photo3.png"
   },
   {
     "email": "app1@odc.com",
@@ -45,7 +50,8 @@
     "prenom": "app1",
     "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
-    "promo": "6"
+    "promo": "6",
+    "image": "photo1.png"
   },
   {
     "email": "app2@odc.com",
@@ -53,7 +59,8 @@
     "prenom": "app2",
     "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
-    "promo": "6"
+    "promo": "6",
+    "image": "photo2.png"
   },
   {
     "email": "app3@odc.com",
@@ -61,7 +68,8 @@
     "prenom": "app3",
     "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
-    "promo": "5"
+    "promo": "5",
+    "image": "photo1.png"
   },
   {
     "email": "app4@odc.com",
@@ -69,6 +77,7 @@
     "prenom": "app4",
     "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
-    "promo": "4"
+    "promo": "4",
+    "image": "photo2.png"
   }
 ]

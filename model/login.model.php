@@ -9,6 +9,7 @@ function findAllUser($promotion){
         'password',
         'role',
         'promo',
+        'image'
     ];
     // $users = read_data_files('utilisateurs',  $user_array_keys);
     $users = read_json_files('utilisateurs');
