@@ -51,6 +51,12 @@
             'dateDiffInvalide' => 'none',
             'promo_exist' => 'none'
         ];
+        $resultAjouterReferentiel = [
+            'libelle_req' => 'none',
+            'dateDebut_req_ref' => 'none',
+            'dateFin_req_ref' => 'none',
+            'dateDiffInvalide' => 'none'
+        ];
 
         function createPromotion($request, $resultCreationPromo){
             if(isset($request['creer_promo'])){
@@ -106,58 +112,53 @@
             }
             return $resultCreationPromo;
         }
-        function ajouterReferentiel($request){
-        if(isset($request['ajouter_ref'])){
-                if(isset($request['libelle'], $request['dateDebut'], $request['dateFin'])){
-                    if(!empty($request['libelle']) &&
-                    !empty($request['dateDebut']) &&
-                    !empty($request['dateFin'])){
-                        extract($request);
-                        if(is_bool(ifExistPromo($libelle))){
-                            $promotions = findAllPromotion();
-                            $number = (int) explode(' ', $libelle)[1];
-                            $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
-                            date_create(formatDateToEnglish($dateFin)));
-                            if((int)$diff->format("%R%m") >= 4){
-                                $promo = [
-                                    'libelle' => $libelle,
-                                    'dateDebut'=> formatDateToEnglish($dateDebut),
-                                    'dateFin' => formatDateToEnglish($dateFin),
-                                    'number' => $number,
-                                    'statut'=> 0
-                                ];
-        
-                                $_SESSION['add_promotion'] = $promo;
-                                header('Location: /create-pro2',true, 301);
+        function ajouterReferentiel($request, $resultAjouterReferentiel){
+            if(isset($request['ajouter_ref'])){
+                if(isset($request['libelle']) && !empty($request['libelle'])){        
+                    extract($request);
+                    $libelle = strtolower(trim($libelle));
+                    if(is_bool(ifExistPromo($libelle))){
+                        $promotions = findAllPromotion();
+                        $number = (int) explode(' ', $libelle)[1];
+                        if(isset($dateDebut) && !empty($dateDebut)){
+                            if(isset($dateFin) && !empty($dateFin)){
+                                $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
+                                date_create(formatDateToEnglish($dateFin)));
+                                if((int)$diff->format("%R%m") >= 4){
+                                    $promo = [
+                                        'libelle' => $libelle,
+                                        'dateDebut'=> formatDateToEnglish($dateDebut),
+                                        'dateFin' => formatDateToEnglish($dateFin),
+                                        'number' => $number,
+                                        'statut'=> 0
+                                    ];
+            
+                                    $_SESSION['add_promotion'] = $promo;
+                                    header('Location: /create-pro2',true, 301);
+                                }else{
+                                    $resultAjouterReferentiel['dateDiffInvalide'] = 'block';
+                                }
                             }else{
-                                return 2;
+                                $resultAjouterReferentiel['dateFin_req_ref'] = 'block';
                             }
+                        }else{
+                           if(isset($dateFin) || empty($dateFin)){
+                            $resultAjouterReferentiel['dateFin_req_ref'] = 'block';
+                           } 
+                           $resultAjouterReferentiel['dateDebut_req_ref'] = 'block';
+                        }
                     }else{
                         $_SESSION['add_promotion'] = ifExistPromo($libelle);
                         header('Location: /create-pro2',true, 301);
                     }
                 }else{
-                    if(!empty($request['libelle'])){
-                        if(!is_bool(ifExistPromo($request['libelle']))){
-                            $_SESSION['add_promotion'] = ifExistPromo($request['libelle']);
-                            header('Location: /create-pro2',true, 301);
-                        }else{
-                            // dd(2);
-                            return 2;
-                        }
-                    }else{
-                        // dd(2);
-                        return 2;
-                    }
-
+                    $resultAjouterReferentiel['libelle_req'] = 'block';
                 }
-            }else{
-                // dd(1);
-                return 1;
             }
+            return $resultAjouterReferentiel;
         }
 
-       }
+
 
         $resultCreationPromo = createPromotion($_REQUEST, $resultCreationPromo);
         // dd($resultCreationPromo);
@@ -170,9 +171,10 @@
                 'promo_exist' => 'none'
             ];
         }
-        $resultAjouterReferentiel= ajouterReferentiel($_REQUEST);
+        
+        $resultAjouterReferentiel= ajouterReferentiel($_REQUEST, $resultAjouterReferentiel);
 
-      
+        
    }
 
    if($uri_ == "create-pro2"){
