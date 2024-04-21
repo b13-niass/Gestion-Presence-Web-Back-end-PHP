@@ -381,3 +381,15 @@ input:checked + .slider:before {
 
 .last-page {
 }
+
+.item-error {
+  background-color: #f6d7d7;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  color: rgba(139, 0, 0, 0.7);
+  border-radius: 5px;
+  font-size: 0.8rem !important;
+  text-align: center;
+  margin-top: 1%;
+}

@@ -94,10 +94,8 @@
                 <span style="font-size:0.7rem;" class="switch-text">Ajouter à la promo active</span>
                 </div>
                 <button type="submit" name="add_new_referentiel">Enregistrer</button>
-                <?php if($error_add_referentiels == 0){ ?>
-                <span style="color: darkred;font-size: 0.6rem;text-align: center;padding-top: 1px;">erreur lors de l'ajout</span>
-                    <?php }?>
                        
+                <span class="item-error" style="display:<?= $error_add_referentiels['exist_ref'] ?>;"> Ce référentiel existe déjà </span>
             </form>
         </div>
         <div class=" tableau-footer">

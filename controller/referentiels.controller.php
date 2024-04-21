@@ -8,7 +8,8 @@ if($uri_ == "ref"){
     $error_add_referentiels = [
         'libelle' => 'none',
         'desc' => 'none',
-        'image' => 'none'
+        'image' => 'none',
+        'exist_ref' => 'none'
     ];
     unset($_SESSION['search_matricule']);
     $_SESSION['search_matricule'] = null;
@@ -71,8 +72,14 @@ if($uri_ == "ref"){
                         if(isset($promo_to_ref) && (int)$promo_to_ref == (int)$_SESSION['promotion_active']){
                             $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $_FILES);
                             $result_add_ref = addReferentielNew($libelle, $promo_to_ref, $_FILES);
+                            if($result_add_ref_base == false || $result_add_ref == false){
+                                $error_add_referentiels['exist_ref'] = 'block';
+                            }
                         }else{
                             $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $_FILES);
+                            if($result_add_ref_base == false){
+                                $error_add_referentiels['exist_ref'] = 'block';
+                            }
                         }
                     }else{
                         $error_add_referentiels['image'] = 'block';
@@ -88,8 +95,14 @@ if($uri_ == "ref"){
                         
                         $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $files_);
                         $result_add_ref = addReferentielNew($libelle, $promo_to_ref, $files_);
+                        if($result_add_ref_base == false || $result_add_ref == false){
+                            $error_add_referentiels['exist_ref'] = 'block';
+                        }
                     }else{
                         $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $files_); 
+                        if($result_add_ref_base == false){
+                            $error_add_referentiels['exist_ref'] = 'block';
+                        }
                     }
                 }
 
