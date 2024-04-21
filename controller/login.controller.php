@@ -3,6 +3,7 @@ require_once "../model/login.model.php";
 
 $promotion_active = $_SESSION['promotion_active'];
 $users = findAllUser($promotion_active);
+// dd($users);
 // 
 
 $error_login = [
@@ -20,10 +21,14 @@ if(isset($_POST['login'])){
             if(isset($_POST['password']) && !empty($_POST['password'])){
             
                 $user = findUser($users, ['email' => $email,'password'=> $password]);
-                
+                // dd($user);
                 if(count($user) > 0){
                     $_SESSION['user_login'] = $user[0];
-                    header("Location: /pro", true, 301);
+                    if($user[0]['role'] == 1){
+                        header("Location: /pro", true, 301);
+                    }else{
+                        header("Location: /pre", true, 301);
+                    }
                 }else{
                     // header("Location: /login", true, 301);
                     $error_login['email_pwd_error'] = 'flex';

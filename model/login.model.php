@@ -1,5 +1,6 @@
 <?php 
 
+require_once dirname(__DIR__)."/orm/file.json.php";
 function findAllUser($promotion){
     $user_array_keys = [
         'email',
@@ -9,7 +10,8 @@ function findAllUser($promotion){
         'role',
         'promo',
     ];
-    $users = read_data_files('utilisateurs',  $user_array_keys);
+    // $users = read_data_files('utilisateurs',  $user_array_keys);
+    $users = read_json_files('utilisateurs');
     // dd($promotion);
     $users = array_filter($users, function($pro) use($promotion){
         return (int) $pro['promo'] == (int)$promotion;
