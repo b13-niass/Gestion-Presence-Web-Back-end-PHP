@@ -6,3 +6,36 @@
 @import "./1025_1200/list_referentiels.css" screen and (min-width: 1025px) and
   (max-width: 1200px);
 @import "./1201_more/list_referentiels.css" screen and (min-width: 1201px);
+
+.container {
+  width: 100%;
+  height: auto;
+  /* max-height: 1000px; */
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  column-gap: 20px;
+  /* padding-right: 1.5%; */
+}
+
+.left {
+  position: sticky;
+  top: 0px;
+  left: 0;
+  margin-bottom: auto;
+}
+
+.right {
+  min-height: 100vh;
+}
+
+.right-middle {
+  min-height: 103vh;
+}
+.content {
+  height: 84vh;
+  flex-wrap: wrap;
+}
+.content .form-referentiels {
+  height: 76vh;
+}

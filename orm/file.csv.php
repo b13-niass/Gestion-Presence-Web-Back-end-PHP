@@ -18,7 +18,9 @@ function write_data_files($file_name, $data){
     $chemin = "../data/$file_name.csv";
 
     $csvData = '';
+    // dd($data);
     foreach ($data as $row) {
+        // dd($row);
         $csvData .= implode(',', $row) . "\n";
     }
     $success = file_put_contents($chemin, $csvData);

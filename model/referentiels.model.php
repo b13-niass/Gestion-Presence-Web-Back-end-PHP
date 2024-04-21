@@ -1,10 +1,41 @@
 <?php
+
+
+function encodeImageToBase64($imagePath) {
+    // Read the binary image file
+    $imageData = file_get_contents($imagePath);
+
+    // Encode the binary data to base64
+    $base64Image = base64_encode($imageData);
+
+    return $base64Image;
+}
+
+function writeBase64ImageToCSV($base64Image, $csvFilePath, $idRef) {
+    // Write the base64-encoded image to a CSV file
+    $file = fopen($csvFilePath, 'a');
+    $result = fputcsv($file, array($idRef,$base64Image));
+    fclose($file);
+    return $result;
+}
+
+function uploadFileEncode($files,$idRef){
+// dd($files);
+    $imagePath = $files["image_referentiel"]["tmp_name"];
+    $csvFilePath = '../data/image_referentiels.csv';
+    
+    $base64Image = encodeImageToBase64($imagePath);
+    return writeBase64ImageToCSV($base64Image, $csvFilePath, $idRef);
+}
+
+
+
     function findAllReferentiel($promotion){
         $ref_array_keys = [
             'id',
             'libelle',
             'promo',
-            'image',
+            // 'image',
             'status'
         ];
 
@@ -22,7 +53,7 @@
             'id',
             'libelle',
             'promo',
-            'image',
+            // 'image',
             'status'
         ];
 
@@ -34,12 +65,22 @@
         $ref_array_keys = [
             'id',
             'libelle',
-            'image',
+            // 'image',
             'desc'
         ];
 
         $referentiels = read_data_files('referentiels_base',  $ref_array_keys);        
         return $referentiels;
+    }
+
+    function findAllReferentielImageCode(){
+        $ref_array_keys = [
+            'id',
+            'code'
+        ];
+
+        $images = read_data_files('image_referentiels',  $ref_array_keys);
+        return $images;
     }
 
 
@@ -68,10 +109,10 @@
      }
 
 
-    function addReferentialBase($libelle, $desc){
+    function addReferentialBase($libelle, $image,$desc){
         $referentiels = findAllReferentielBase();
         $id = end($referentiels)['id']+1;
-        $ref = ['id' => $id, 'libelle' => $libelle, 'image' => 'ref.jpg', 'desc'=> $desc];
+        $ref = ['id' => $id, 'libelle' => $libelle, 'image' => $image, 'desc'=> $desc];
         foreach($referentiels as $referentiel){
             if($ref['libelle'] == $referentiel['libelle']){
                 return false;
@@ -84,6 +125,26 @@
 
     }
 
+    function addReferentialBaseEncodeFile($libelle, $desc, $files){
+        $referentiels = findAllReferentielBase();
+        $id = end($referentiels)['id']+1;
+
+        $ref = ['id' => $id, 'libelle' => $libelle, 'desc'=> $desc];
+        foreach($referentiels as $referentiel){
+            if($ref['libelle'] == $referentiel['libelle']){
+                return false;
+            }
+        }
+        $result_upload = uploadFileEncode($files,$id);
+        array_push($referentiels, $ref);
+        
+        return writeReferentiels($referentiels);
+
+    }
+
+
+    
+
     function getLibelleReferentiel($id){
         $referentiels = findAllReferentielBase();
 
@@ -92,6 +153,26 @@
                 return $ref['libelle'];
             }
         }
+    }
+
+    function getRefImageCode($id){
+        $images = findAllReferentielImageCode();
+        foreach($images as $img){
+            if((int)$img["id"] == (int) $id){
+                return $img["code"];
+            }
+        }
+    }
+
+    function getIdReferentiel($libelle){
+        $referentiels = findAllReferentielBase();
+
+        foreach($referentiels as $ref){
+            if($ref['libelle'] == $libelle){
+                return $ref['id'];
+            }
+        }
+        return "css/ref.jpg";
     }
 
     function addReferentiel($id,$promo){
@@ -114,7 +195,32 @@
                 return false;
             }
            
-
     }
+
+    function addReferentielNew($libelle, $promo, $files){
+        $referentiels = findAllReferentiel((int)$promo);
+        $referentielsAll = findAllReferentielBase();
+        $idRef = getIdReferentiel($libelle);
+
+        $cpt = 0;
+        $ref_to_add = [
+            'id' => $idRef,
+            'libelle' => $libelle,
+            'promo' => $promo,
+            'status' => 1
+        ];
+
+        foreach($referentiels as $referentiel){
+            if($libelle == $referentiel['libelle']){
+               return false;
+            }
+        }
+
+        // $result_upload = uploadFileEncode($files,$idRef);
+        array_push($referentiels, $ref_to_add);
+    
+        return writeReferentielsPromo($referentiels);
+
+}
 
 ?>

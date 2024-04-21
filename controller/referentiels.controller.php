@@ -1,13 +1,37 @@
 <?php
     require_once "../model/$controller.model.php";
 
+   
+
+
 if($uri_ == "ref"){
-    $error_add_referentiels = 1;
+    $error_add_referentiels = [
+        'libelle' => 'none',
+        'desc' => 'none',
+        'image' => 'none'
+    ];
     unset($_SESSION['search_matricule']);
     $_SESSION['search_matricule'] = null;
     $promotion_active = $_SESSION['promotion_active'];
     
+    if(!isset($_SESSION['per_page_app'])){
+        $_SESSION['per_page_app'] = 10;
+    }
+
+    if(isset($_POST['per_page_app'])){
+        $_SESSION['per_page_app'] = $_POST['per_page_app'];
+    }
+
+    $per_page = (integer) $_SESSION['per_page_app'];
+    
+
     $referentiels = findAllReferentiel($_SESSION['promotion_active']);
+    $nbrPage = getNbrPage( $referentiels, $per_page);
+    if($nbrPage == 0){
+        $nbrPage = 1;
+    }
+    $current_page = getCurrentPage($nbrPage);
+
 
     if(!isset($_SESSION['search_matricule']) && !isset($_POST['search_matricule'])){
         unset($_SESSION['search_matricule']);
@@ -33,65 +57,63 @@ if($uri_ == "ref"){
 
     if(isset($_POST['add_new_referentiel'])){
         extract($_POST);
+        $allowed_ext = array("jpg" => "image/jpg", 
+        "jpeg" => "image/jpeg", 
+        "png" => "image/png"); 
 
-        uploadFile($_FILES);
+        if(isset($libelle) && !empty($libelle)){
+            $libelle = strtolower(trim($libelle));
+            if(isset($desc) && !empty($desc)){
+                $desc = strtolower(trim($desc));
+                
+                if(isset($_FILES["image_referentiel"]) && !empty($_FILES["image_referentiel"]["name"])){                    $file_type = $_FILES["image_referentiel"]["type"]; 
+                    if(in_array($file_type, $allowed_ext)){
+                        if(isset($promo_to_ref) && (int)$promo_to_ref == (int)$_SESSION['promotion_active']){
+                            $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $_FILES);
+                            $result_add_ref = addReferentielNew($libelle, $promo_to_ref, $_FILES);
+                        }else{
+                            $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $_FILES);
+                        }
+                    }else{
+                        $error_add_referentiels['image'] = 'block';
+                    }
+                   
+                }else{
+                    $files_ = [
+                        'image_referentiel' => [
+                         'name' => 'img/ref.jpg'
+                        ]
+                    ];
+                    if(isset($promo_to_ref) && (int)$promo_to_ref == (int)$_SESSION['promotion_active']){
+                        
+                        $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $files_);
+                        $result_add_ref = addReferentielNew($libelle, $promo_to_ref, $files_);
+                    }else{
+                        $result_add_ref_base = addReferentialBaseEncodeFile($libelle, $desc, $files_); 
+                    }
+                }
 
-        // if(!addReferentialBase($libelle, $desc)){
-        //     $error_add_referentiels = 0;
-        // }else{
-        //     $error_add_referentiels = 1;
-        // }
+            }else{
+                $error_add_referentiels['desc'] = 'block';
+            }
+        }else{
+            if(!isset($desc) || empty($desc)){
+                $error_add_referentiels['desc'] = 'block';
+            }
+            $error_add_referentiels['libelle'] = 'block';
+        }
+
+
     }
 }
 
-function uploadFile($files){
-    // dd($_SERVER);
-    $target_dir = $_SERVER['DOCUMENT_ROOT'].'/projet/public/img/';
-    $target_file = $target_dir.basename($files["image_referentiel"]["name"]);
-    if(isset($files["image_referentiel"]) &&  
-        $files["image_referentiel"]["error"] == 0) { 
-        $allowed_ext = array("jpg" => "image/jpg", 
-                            "jpeg" => "image/jpeg", 
-                            "png" => "image/png"); 
-        $file_name = $files["image_referentiel"]["name"]; 
-        $file_type = $files["image_referentiel"]["type"]; 
-        $file_size = $files["image_referentiel"]["size"]; 
-      
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION); 
-  
-        if (!array_key_exists($ext, $allowed_ext)) { 
-            die("Error: Please select a valid file format."); 
-        }     
-                      $maxsize = 2 * 1024 * 1024; 
-          
-        if ($file_size > $maxsize) { 
-            die("Error: File size is larger than the allowed limit."); 
-        }                     
-        if (in_array($file_type, $allowed_ext)) 
-        { 
-            if (file_exists($target_dir . $files["image_referentiel"]["name"])) { 
-                echo $files["image_referentiel"]["name"]." is already exists."; 
-            }         
-            else { 
-                if (move_uploaded_file($files["image_referentiel"]["tmp_name"],  
-                $target_file)) { 
-                    echo "The file ".  $files["image_referentiel"]["name"].  
-                      " has been uploaded."; 
-                }  
-                else { 
-                    echo "Sorry, there was an error uploading your file."; 
-                } 
-            } 
-        } 
-        else { 
-            echo "Error: Please try again."; 
-        } 
-    } 
-    else { 
-        echo "Error: ". $files["image_referentiel"]["error"]; 
-    } 
-    die();
-} 
-
+function generateRandomName($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $randomString;
+}
 
 ?>

@@ -3,6 +3,7 @@
 define("WEBROOT", "http://www.cheikh.ibrahima.dieng:8013/projet");
 define("ENVIRONNEMENT", "DEV");
 define("FILES", "/projet/model/files/");
+define("UPLOAD_DIR", $_SERVER['DOCUMENT_ROOT'].'/projet/public/img/');
 /**
  * Pagination
  */

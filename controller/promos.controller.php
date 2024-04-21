@@ -87,53 +87,56 @@
             }
         }
         function ajouterReferentiel($request){
-            if(isset($request['libelle'], $request['dateDebut'], $request['dateFin'])){
-                if(!empty($request['libelle']) &&
-                !empty($request['dateDebut']) &&
-                !empty($request['dateFin'])){
-                    extract($request);
-                    if(is_bool(ifExistPromo($libelle))){
-                        $promotions = findAllPromotion();
-                        $number = (int) explode(' ', $libelle)[1];
-                        $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
-                        date_create(formatDateToEnglish($dateFin)));
-                        if((int)$diff->format("%R%m") >= 4){
-                            $promo = [
-                                'libelle' => $libelle,
-                                'dateDebut'=> formatDateToEnglish($dateDebut),
-                                'dateFin' => formatDateToEnglish($dateFin),
-                                'number' => $number,
-                                'statut'=> 0
-                            ];
-    
-                            $_SESSION['add_promotion'] = $promo;
+        if(isset($request['ajouter_ref'])){
+                if(isset($request['libelle'], $request['dateDebut'], $request['dateFin'])){
+                    if(!empty($request['libelle']) &&
+                    !empty($request['dateDebut']) &&
+                    !empty($request['dateFin'])){
+                        extract($request);
+                        if(is_bool(ifExistPromo($libelle))){
+                            $promotions = findAllPromotion();
+                            $number = (int) explode(' ', $libelle)[1];
+                            $diff = date_diff(date_create(formatDateToEnglish($dateDebut)),
+                            date_create(formatDateToEnglish($dateFin)));
+                            if((int)$diff->format("%R%m") >= 4){
+                                $promo = [
+                                    'libelle' => $libelle,
+                                    'dateDebut'=> formatDateToEnglish($dateDebut),
+                                    'dateFin' => formatDateToEnglish($dateFin),
+                                    'number' => $number,
+                                    'statut'=> 0
+                                ];
+        
+                                $_SESSION['add_promotion'] = $promo;
+                                header('Location: /create-pro2',true, 301);
+                            }else{
+                                return 2;
+                            }
+                    }else{
+                        $_SESSION['add_promotion'] = ifExistPromo($libelle);
+                        header('Location: /create-pro2',true, 301);
+                    }
+                }else{
+                    if(!empty($request['libelle'])){
+                        if(!is_bool(ifExistPromo($request['libelle']))){
+                            $_SESSION['add_promotion'] = ifExistPromo($request['libelle']);
                             header('Location: /create-pro2',true, 301);
                         }else{
+                            // dd(2);
                             return 2;
                         }
-                }else{
-                    $_SESSION['add_promotion'] = ifExistPromo($libelle);
-                    header('Location: /create-pro2',true, 301);
-                }
-            }else{
-                if(!empty($request['libelle'])){
-                    if(!is_bool(ifExistPromo($request['libelle']))){
-                        $_SESSION['add_promotion'] = ifExistPromo($request['libelle']);
-                        header('Location: /create-pro2',true, 301);
                     }else{
                         // dd(2);
                         return 2;
                     }
-                }else{
-                    // dd(2);
-                    return 2;
-                }
 
+                }
+            }else{
+                // dd(1);
+                return 1;
             }
-        }else{
-            // dd(1);
-            return 1;
         }
+
        }
 
         $resultCreationPromo = createPromotion($_REQUEST);
