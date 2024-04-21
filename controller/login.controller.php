@@ -3,7 +3,8 @@ require_once "../model/login.model.php";
 
 $promotion_active = $_SESSION['promotion_active'];
 $users = findAllUser($promotion_active);
-// dd($users);
+
+// dd(password_hash("passer@1", PASSWORD_DEFAULT));
 // 
 
 $error_login = [

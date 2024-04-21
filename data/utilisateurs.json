@@ -3,7 +3,7 @@
     "email": "admin1@odc.com",
     "nom": "admin1",
     "prenom": "admin1",
-    "password": "12345",
+    "password": "$2y$10$jRel9hM8Ojs5XFQTk7EAw.Ke9T5rczH343KLCMKmDIHWhBNRepVwe",
     "role": "1",
     "promo": "6"
   },
@@ -11,7 +11,7 @@
     "email": "admin2@odc.com",
     "nom": "admin2",
     "prenom": "admin2",
-    "password": "12345678",
+    "password": "$2y$10$.Fmet1GwpmYF1bwCEpBKOeB8FfPMr86LIPq0en/2EMlU4H0CXIzAW",
     "role": "1",
     "promo": "5"
   },
@@ -19,7 +19,7 @@
     "email": "admin3@odc.com",
     "nom": "admin3",
     "prenom": "admin3",
-    "password": "12345674",
+    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
     "promo": "4"
   },
@@ -27,7 +27,7 @@
     "email": "admin4@odc.com",
     "nom": "admin4",
     "prenom": "admin4",
-    "password": "12345674",
+    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
     "promo": "3"
   },
@@ -35,7 +35,7 @@
     "email": "admin5@odc.com",
     "nom": "admin5",
     "prenom": "admin5",
-    "password": "12345674",
+    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
     "role": "1",
     "promo": "2"
   },
@@ -43,7 +43,7 @@
     "email": "app1@odc.com",
     "nom": "app1",
     "prenom": "app1",
-    "password": "passer@1",
+    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
     "promo": "6"
   },
@@ -51,7 +51,7 @@
     "email": "app2@odc.com",
     "nom": "app2",
     "prenom": "app2",
-    "password": "passer@1",
+    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
     "promo": "6"
   },
@@ -59,7 +59,7 @@
     "email": "app3@odc.com",
     "nom": "app3",
     "prenom": "app3",
-    "password": "passer@1",
+    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
     "promo": "5"
   },
@@ -67,7 +67,7 @@
     "email": "app4@odc.com",
     "nom": "app4",
     "prenom": "app4",
-    "password": "passer@1",
+    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
     "role": "2",
     "promo": "4"
   }

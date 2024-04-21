@@ -25,7 +25,8 @@ function findAllUser($promotion){
 
 function findUser(array $users, array $data){
     $user = array_filter($users, function($user) use($data){
-        if($user['email'] == $data['email'] && $user['password'] == $data['password']){
+        
+        if($user['email'] == $data['email'] && password_verify($data['password'], $user['password'])){
             return true;
         }
     });
