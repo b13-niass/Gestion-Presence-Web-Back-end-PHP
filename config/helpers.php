@@ -46,6 +46,28 @@ function dd($data){
     die();
 }
 
+function limitTempsDeConnexion($temps){
+    if (isset($_SESSION['LAST_ACTIVITY'])) {
+        $expireAfter = $temps * 60;
+        $currentTime = time();
+        $lastActivityTime = $_SESSION['LAST_ACTIVITY'];
+        $timeElapsed = $currentTime - $lastActivityTime;
+        if ($timeElapsed > $expireAfter) {
+            session_unset(); 
+            session_destroy();  
+            return 'login';
+        }
+    }
+    return false;
+}
+
+function debutTempsDeConnexion(){
+    if (!isset($_SESSION['LAST_ACTIVITY'])) {
+        $_SESSION['LAST_ACTIVITY'] = time();
+    }
+}
+
+
 /**
  * Debut Pagination Function
  */

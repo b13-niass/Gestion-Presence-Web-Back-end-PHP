@@ -1,6 +1,7 @@
 <?php 
 
 require_once dirname(__DIR__)."/orm/file.json.php";
+
 function findAllUser($promotion){
     $user_array_keys = [
         'email',

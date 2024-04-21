@@ -1,8 +1,11 @@
 <?php 
 require_once "../model/login.model.php";
 
-$promotion_active = $_SESSION['promotion_active'];
-$users = findAllUser($promotion_active);
+if(isset($_SESSION['promotion_active'])){
+    $promotion_active = $_SESSION['promotion_active'];
+    $users = findAllUser($promotion_active);
+}
+
 
 // dd(password_hash("passer@1", PASSWORD_DEFAULT));
 // 
@@ -48,13 +51,15 @@ if(isset($_POST['login'])){
 }
 
 if(isset($_POST['logout'])){
-    $_SESSION['user_login'] = null;
-    $_SESSION['promotion_active'] = null;
-    $_SESSION['per_page_pro'] = null;
-    $_SESSION['per_page_pre'] = null;
-    $_SESSION['all_presence'] = null;
-    $_SESSION['filter_presence'] = null;
-    $_SESSION['search_matricule'] = null;
+    // $_SESSION['user_login'] = null;
+    // $_SESSION['promotion_active'] = null;
+    // $_SESSION['per_page_pro'] = null;
+    // $_SESSION['per_page_pre'] = null;
+    // $_SESSION['all_presence'] = null;
+    // $_SESSION['filter_presence'] = null;
+    // $_SESSION['search_matricule'] = null;
     // session_destroy();
+    session_unset(); 
+    session_destroy();  
     header("Location: /login",true, 301);
 }

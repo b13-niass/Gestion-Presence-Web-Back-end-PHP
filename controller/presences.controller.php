@@ -1,6 +1,7 @@
 <?php 
 
 require_once "../model/$controller.model.php";
+// debutTempsDeConnexion();
 
 if($uri_ == "pre"){
 

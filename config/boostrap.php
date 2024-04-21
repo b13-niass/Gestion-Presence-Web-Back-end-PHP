@@ -44,3 +44,8 @@ $page = pageNameGenerate($_REQUEST,$pages)[0];
 $uri_ = pageNameGenerate($_REQUEST,$pages)[2]??"";
 
 // dd(getTodayDate());
+
+$limit = limitTempsDeConnexion(1);
+if($limit != false){
+    $page = $limit;
+}

@@ -2,6 +2,7 @@
    require_once "../model/$controller.model.php";
    require_once("../validations/validations.php");
   
+   debutTempsDeConnexion();
    
    if($uri_ == "pro"){
     $promotion_active = $_SESSION['promotion_active'];

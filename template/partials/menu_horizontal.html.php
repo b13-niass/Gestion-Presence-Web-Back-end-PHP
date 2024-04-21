@@ -14,7 +14,7 @@
     </div>
 
     <div class="mh-date">
-        <i class="fa-regular fa-calendar"></i>20 March 2024
+        <i class="fa-regular fa-calendar"></i><?= date('d M Y') ?>
     </div>
     <div class="mh-profil">
         <div class="photo-profil">
