@@ -124,10 +124,8 @@
 
      function if_ref_exist_apprenant($promo, $ref){
         $apprenants = findAllApprenant($promo);
-
         foreach($apprenants as $app){
             if((integer) $app['referentiel'] == (integer) $ref['id']){
-                // var_dump($app);
                 return true;
             }
         }

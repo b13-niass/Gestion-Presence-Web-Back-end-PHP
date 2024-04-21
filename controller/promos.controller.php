@@ -187,6 +187,7 @@
         if(isset($_POST['create_promo'])){
             $promotion = $_SESSION["add_promotion"];
             $referentiels = $_POST['referentiels'];
+            // dd($referentiels);
             if(is_bool(ifExistPromo($promotion['libelle']))){
                $result = addPromotion($promotion['libelle'], $promotion['dateDebut'],
                     $promotion['dateFin'], $promotion['number']); 
@@ -200,15 +201,13 @@
                     die("Erreur de sauvegarde");
                 }
             }else{
-                foreach($referentiels as $referentiel){
-                    $result = addReferentiel((int)$referentiel, $la_promo);
-                }
-                if($result){
+                // foreach($referentiels as $referentiel){
+                    $result = addReferentiel($referentiels, $la_promo);
+                // }
+              
                     $_SESSION["add_promotion"] = null;
                     header("Location: /pro");
-                }else{
-                    die("Erreur de sauvegarde");
-                }
+                
             }
         }
 

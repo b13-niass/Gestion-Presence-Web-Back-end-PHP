@@ -1,5 +1,5 @@
 <?php
-
+ require_once "../model/promos.model.php";
 
 function encodeImageToBase64($imagePath) {
     // Read the binary image file
@@ -10,6 +10,7 @@ function encodeImageToBase64($imagePath) {
 
     return $base64Image;
 }
+
 
 function writeBase64ImageToCSV($base64Image, $csvFilePath, $idRef) {
     // Write the base64-encoded image to a CSV file
@@ -175,25 +176,53 @@ function uploadFileEncode($files,$idRef){
         return "css/ref.jpg";
     }
 
-    function addReferentiel($id,$promo){
+    function findAllRefPromoWithoutApp($promo){
+        $referentiels = findAllReferentiel($promo);
+        $ref_promo_without_app = [];
+        foreach($referentiels as $ref){
+            $test = if_ref_exist_apprenant($promo, $ref);
+            if(!$test){
+                $ref_promo_without_app[] = $ref;
+            }
+        }
+        return $ref_promo_without_app;
+    }
+
+    function addReferentiel($referentiels_check,$promo){
             $referentiels = findAllReferentielWithoutPromo();
-            $libelle = getLibelleReferentiel($id);
-            $ref = ['id' => $id, 'libelle' => $libelle,'promo' => $promo, 'image' => 'ref.jpg', 'status' => 1];
-            $cpt = 0;
-            foreach($referentiels as $referentiel){
-                if($ref['id'] == (int)$referentiel['id'] && (int)$referentiel['promo'] == $promo){
-                    $cpt = 1;
-                    break;
+            $ref_promo_without_app = findAllRefPromoWithoutApp($promo);
+            $un_checked = [];
+            $referentiels_update = [];
+            foreach($ref_promo_without_app as $rpwa){
+                if(!in_array($rpwa['id'], $referentiels_check)){
+                    $un_checked[] = $rpwa['id'];
                 }
             }
             
-            if($cpt == 0){
-                array_push($referentiels, $ref);
-            
-                return writeReferentielsPromo($referentiels);
-            }else{
-                return false;
+            if(count($un_checked)){
+                foreach($referentiels as $ref){
+                    if(in_array($ref['id'], $un_checked) && $ref['promo'] == $promo){
+                        continue;
+                    }
+                    $referentiels_update[] = $ref;
+                }
+                $referentiels = $referentiels_update;
+            } 
+        
+            foreach($referentiels_check as $ref_c){
+                    $cpt = 0;
+                    $libelle = getLibelleReferentiel($ref_c);
+                    $ref_ = ['id' => $ref_c, 'libelle' => $libelle,'promo' => $promo,'status' => 1];  
+                    foreach($referentiels as $ref){
+                        if($ref_c == $ref['id'] && $promo == $ref['promo']){
+                            $cpt = 1;
+                        }
+                    }
+                    if($cpt == 0){
+                        array_push($referentiels, $ref_);
+                    }       
             }
+                return writeReferentielsPromo($referentiels);
            
     }
 
