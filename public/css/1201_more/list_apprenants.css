@@ -113,7 +113,7 @@
 }
 
 .tableau-titre a:first-child {
-  width: 15%;
+  width: 18%;
   padding: 2%;
   background-color: var(--couleur-secondaire);
   text-decoration: none;
@@ -126,7 +126,7 @@
 }
 
 .tableau-titre a:nth-child(2) {
-  width: 20%;
+  width: 25%;
   padding: 2%;
   /* height: 0%; */
   background-color: #ff8504;
@@ -426,16 +426,141 @@
   border-radius: var(--border-radius-primaire);
 }
 
-.popup > div a:last-child {
+.popup > div label:last-child {
   text-decoration: none;
   background-color: var(--couleur-secondaire);
   padding: 1.5% 2.5%;
   color: white;
   border-radius: var(--border-radius-primaire);
+  border: none;
 }
 
+/*Modal 4*/
+.popup4 > div a:first-child {
+  text-decoration: none;
+  background-color: red;
+  padding: 1.5% 2.5%;
+  color: white;
+  border-radius: var(--border-radius-primaire);
+}
+
+.popup4 > div label:last-child {
+  text-decoration: none;
+  background-color: var(--couleur-secondaire);
+  padding: 1.5% 2.5%;
+  color: white;
+  border-radius: var(--border-radius-primaire);
+  border: none;
+}
+.popup4 {
+  display: flex;
+  height: 85vh;
+  flex-wrap: wrap;
+  margin: 70px auto;
+  background: #fff;
+  border-radius: 5px;
+  width: 70%;
+  position: relative;
+  transition: all 0s ease-in-out;
+  align-content: start;
+}
+.popup4 .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transition: all 200ms;
+  padding: 0% 0.8% !important;
+  background-color: var(--couleur-secondaire) !important;
+  /* font-size: 20px;
+  font-weight: bold;
+  text-decoration: none; */
+  /* color: #333; */
+}
+
+.popup4-header {
+  width: 100%;
+  height: 10%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--couleur-secondaire);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.popup4-body {
+  width: 100%;
+  height: 80%;
+}
+
+.popup4 {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7rem !important;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.7rem !important;
+  }
+
+  thead {
+    background-color: #333;
+    color: #fff;
+    font-size: 0.7rem !important;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+  .activer {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: green;
+  }
+  .desactiver {
+    background-color: rgba(0, 0, 255, 0.2);
+    color: red;
+  }
+  .header-rappor {
+    display: flex;
+    column-gap: 5px;
+  }
+  .header-rappor a {
+    text-decoration: none;
+    padding: 0.5% 1%;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+  }
+
+  .rap-link1 {
+    background-color: rgba(0, 255, 0, 0.5);
+    color: black !important;
+  }
+  .rap-link2,
+  .rap-link3,
+  .rap-link4,
+  .rap-link5 {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+}
+
+#liste-exclu * {
+  border: 1px solid black;
+}
+/*Modal 4*/
+
 .overlay1,
-.overlay2 {
+.overlay2,
+.overlay3 {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -447,7 +572,8 @@
   opacity: 0;
 }
 .overlay1:target,
-.overlay2:target {
+.overlay2:target,
+.overlay3:target {
   visibility: visible;
   opacity: 1;
 }
@@ -801,4 +927,66 @@
   width: 13%;
   height: 100%;
   opacity: 0;
+}
+
+.dropbtn-b {
+  background-color: var(--couleur-secondaire);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-b {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content-b {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content-b label {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 1rem;
+  display: flex;
+  column-gap: 2px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content-b a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown-b:hover .dropdown-content-b {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown-b:hover .dropbtn-b {
+  background-color: var(--couleur-secondaire);
+}
+
+.dropdown-content-b label:has(.check-ref:checked) {
+  background-color: rgb(163, 162, 162);
+  color: black !important;
+}
+.dropdown-content-b label:has(.check-ref:checked) span {
+  color: black !important;
+}
+.check-ref {
+  /* visibility: hidden; */
 }

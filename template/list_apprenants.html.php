@@ -16,7 +16,17 @@
                 </span>
             </a>
         </div>
-        <div>Référentiel: <span>Dev Web/Mobile</span></div>
+        <div class="dropdown-b" style="margin-right: 5%">
+            <button class="dropbtn-b">Filtre Par Référentiel_____</button>
+            <div class="dropdown-content-b">
+                <form action="" method="POST" id="formRef">
+                    <?php foreach($referentiels_promo as $key => $ref) : ?>
+                    <label for="idRef<?=$ref['id']?>"> <input id="idRef<?=$ref['id']?>" class="check-ref" type="checkbox" name="referentiels[]" value="<?= $ref['id'] ?>"><span> <?= $ref['libelle'] ?></span></label>
+                        <input style="visibility: hidden;" type="submit" name="filtre_ref">
+                    <?php endforeach; ?>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div class="content">
@@ -34,10 +44,10 @@
                 <div class="search-add">
                     <a href="#nouvelle-1"> <i class="fa fa-plus"></i>Nouvelle </a>
                     <a href="#insertion-masse"> Insertion en masse </a>
-                    <a href="#">
+                    <a href="/projet/data/fichier_model_apprenant.csv" download>
                         <i class="fa-solid fa-right-to-bracket"></i>Fichier model
                     </a>
-                    <a href="#">Liste des Exclus </a>
+                    <a href="#liste-exclu">Liste des Exclus </a>
                 </div>
             </div>
             <div class="tableau-titre tab-filtre">
@@ -72,7 +82,7 @@
                     <div class="col"><?= $apprenant['nom'] ?></div>
                     <div class="col"><?= $apprenant['prenom'] ?></div>
                     <div class="col"><?= $apprenant['email'] ?></div>
-                    <div class="col"><?= $apprenant['genre'] ?></div>
+                    <div class="col"><?= $apprenant['genre'] == 1 ? 'M' : 'F' ?></div>
                     <div class="col"><?= $apprenant['telephone'] ?></div>
                     <div class="col"><span class="span-bleuf"></span></div>
                 </div>
@@ -100,23 +110,26 @@
     </div>
 </div>
 
-
 <div id="insertion-masse" class="overlay1">
+
     <div class="popup">
         <!-- <a class="close" href="#">&times;</a> -->
-        <form action="" method="post">
-            <h4>Choisir un fichier Excel</h4>
+        <h4>Choisir un fichier Excel</h4>
+        <form action="/rapport-import" method="post" enctype="multipart/form-data">
             <div>
                 <span>Drop files here or click to upload</span>
                 <input type="file" name="file" id="file" />
             </div>
+            <button style="visibility: hidden;" id="btnSubmitInsMass" type="submit" name="enregistrer_app">Enregistrer</button>
         </form>
         <div>
             <a class="close" href="#">Fermer</a>
-            <a href="#">Enregistrer</a>
+            <label for="btnSubmitInsMass">Enregistrer</label>
         </div>
     </div>
+ 
 </div>
+
 
 <div id="nouvelle-1" class="overlay2">
     <div class="popup2">
@@ -229,3 +242,61 @@
         </div>
     </div>
 </div>
+
+<div id="liste-exclu" class="overlay3">
+
+    <div class="popup4">
+       <div class="popup4-header">
+       <a class="close" href="#">&times;</a>
+            Liste des apprenants qui ne se sont jamais connectés
+       </div>
+       <div class="popup4-body">
+       <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Date de naissance</th>
+        <th>Téléphone</th>
+        <th>Référentiel</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <?php 
+    if(isset($list_new_apprenant) && !empty($list_new_apprenant)){
+        foreach($list_new_apprenant as $key => $value){
+    ?>
+    <tr>
+        <td><?= $value['nom'] ?></td>
+        <td><?= $value['prenom'] ?></td>
+        <td><?= $value['email'] ?></td>
+        <td><?= date('d-m-Y',strtotime($value['datenaiss'])) ?></td>
+        <td><?= $value['tel'] ?></td>
+        <td><?= $value['referentiel'] ?></td>
+        <td class="activer">Importer</td>
+    </tr>
+    <?php
+        }
+    }    
+    ?>
+
+    </tbody>
+  </table>
+        </div>
+    </div>
+ 
+</div>
+
+<script>
+    let formRef = document.querySelector('#formRef');
+    console.log(formRef);
+    formRef.addEventListener('keydown', function(event){
+        // console.log(event);
+        if(event.key == 'Enter'){
+            formRef.submit();
+        }
+    });
+</script>

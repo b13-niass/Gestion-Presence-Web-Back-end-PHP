@@ -1,6 +1,8 @@
 <?php
     require_once "../model/$controller.model.php";
 
+// dd(sendMailToApprenant('../template/email-inlined.html.php', 'codev13.sendmail@gmail.com', 'barhamadieng66@gmail.com'));
+
 if($uri_ == "app"){
 
     unset($_SESSION['filtre_apprenant']);
@@ -9,6 +11,11 @@ if($uri_ == "app"){
     $_SESSION['search_matricule'] = null;
     
     $promotion_active = $_SESSION['promotion_active'];
+    $list_new_apprenant = findAllNewApprenant($promotion_active);
+    
+    $referentiels_promo = findAllReferentiel($promotion_active);
+
+
     if(!isset($_SESSION['per_page_app'])){
         $_SESSION['per_page_app'] = 10;
     }
@@ -21,6 +28,23 @@ if($uri_ == "app"){
     
 
     $apprenants = findAllApprenant($_SESSION['promotion_active']);
+    $list_new_apprenant = listPaginate($per_page, $list_new_apprenant,1);
+    // dd($list_new_apprenant);
+    if(isset($_GET['page'])){
+        $tab_uri = explode('/',$_GET['page']);
+        if(isset($tab_uri[3])){
+            $id_ref = $tab_uri[3];
+            $apprenants =  findApprenantByRef([$id_ref], $_SESSION['promotion_active']);
+        }
+    }
+
+
+    if(isset($_POST['filtre_ref'])){
+        // dd();
+        $apprenants =  findApprenantByRef($_POST['referentiels'], $_SESSION['promotion_active']);
+
+    }
+
     $nbrPage = getNbrPage( $apprenants, $per_page);
     if($nbrPage == 0){
         $nbrPage = 1;
@@ -87,5 +111,6 @@ if($uri_ == "app"){
             $_SESSION['idPromotion'] = (integer) $_POST['idPromotion'];
         }
     }
+
 }
 ?>

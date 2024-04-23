@@ -73,22 +73,25 @@ function debutTempsDeConnexion(){
  */
 
 function listPaginate($per_page, $listes, $page_number=1){
-    
-    $nbrPage = ceil(count($listes)/$per_page);
-    $fin = $page_number * $per_page;
-    $debut = $fin - $per_page;
+    if(isset($listes) && !empty($listes)){
+        $nbrPage = ceil(count($listes)/$per_page);
+        $fin = $page_number * $per_page;
+        $debut = $fin - $per_page;
 
-    if($nbrPage == $page_number){
-        for($i=$debut; $i < count($listes); $i++){
-            $tabPaginate[] = $listes[$i];
+        if($nbrPage == $page_number){
+            for($i=$debut; $i < count($listes); $i++){
+                $tabPaginate[] = $listes[$i];
+            }
+        }else{
+            for($i=$debut; $i < $fin; $i++){
+                $tabPaginate[] = $listes[$i];
+            }
         }
+        
+        return $tabPaginate;
     }else{
-        for($i=$debut; $i < $fin; $i++){
-            $tabPaginate[] = $listes[$i];
-        }
+        return [];
     }
-    
-    return $tabPaginate;
 }
 
 function getCurrentPage($nbrPage){

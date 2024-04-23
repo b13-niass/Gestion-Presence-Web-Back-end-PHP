@@ -14,6 +14,25 @@ function read_data_files($file_name,$keys = null){
     return $array;
 }
 
+function read_data_files_app($chemin,$keys = null){
+    $csvData = file_get_contents($chemin);
+    $lines = explode(PHP_EOL, $csvData);
+    $array = array();
+    foreach ($lines as $key => $line) {
+        if($key == 0){
+            continue;
+        }
+        if(strlen($line) > 8){
+            // var_dump($line);
+            $values = str_getcsv($line, ';');
+            $array[] = $keys == null ? $values : array_combine($keys, $values);
+        }
+    }
+    // dd($array);
+    return $array;
+}
+
+
 function write_data_files($file_name, $data){
     $chemin = "../data/$file_name.csv";
 

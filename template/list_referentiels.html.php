@@ -50,7 +50,9 @@
                     <img style="width: 100%;max-width: 100%; height: 104%;" src="data:image/jpeg;base64,<?= getRefImageCode($referentiel['id']) ?>" alt="" srcset="">
                 </div>
                 <div class="bottom">
-                    <span><?= $referentiel['libelle'] ?></span>
+                    <a href="/app/1/<?= $referentiel['id'] ?>" style="text-decoration: none; color: black;">
+                        <span><?= $referentiel['libelle'] ?></span>
+                    </a>
 
                     <span class="activer">Active</span>
 

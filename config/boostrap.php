@@ -38,14 +38,16 @@ $pages = [
     'login' => ['login'],
     'create-pro1' => ['create_promo_1', 'promos'],
     'create-pro2' => ['create_promo_2', 'promos'],
-    'event' => ['list_evenements', 'evenements']
+    'event' => ['list_evenements', 'evenements'],
+    'rapport-import' => ['rapport_import_apprenant','rapport_import_apprenant']
 ];
 $page = pageNameGenerate($_REQUEST,$pages)[0];
 $uri_ = pageNameGenerate($_REQUEST,$pages)[2]??"";
+$uri_all = pageNameGenerate($_REQUEST,$pages)??"";
 
 // dd(getTodayDate());
 
-$limit = limitTempsDeConnexion(60);
+$limit = limitTempsDeConnexion(500);
 if($limit != false){
     $page = $limit;
 }

@@ -31,9 +31,15 @@
             </a>
         </div>
         <div class="menu-item">
-            <a href="/app" class="<?= $uri_ == "app" ? "color-menu-item" : "" ?> <?= $_SESSION['user_login']['role'] == 2 ? 'disabled-link' : ''?>" >
+            <a href="#" class="disabled" >
                 <i class="visit-icon <?= $uri_ == "app" ? "user-menu-item" : "" ?>"></i>
                 Visiteurs
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="/app" class="<?= $uri_ == "app" ? "color-menu-item" : "" ?> <?= $_SESSION['user_login']['role'] == 2 ? 'disabled-link' : ''?>" >
+                <i class="visit-icon <?= $uri_ == "app" ? "user-menu-item" : "" ?>"></i>
+                Apprenant
             </a>
         </div>
         <div class="menu-item">
