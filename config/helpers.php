@@ -72,12 +72,14 @@ function debutTempsDeConnexion(){
  * Debut Pagination Function
  */
 
-function listPaginate($per_page, $listes, $page_number=1){
+function listPaginate($per_page, $listes, $page_number){
+    
     if(isset($listes) && !empty($listes)){
+        
         $nbrPage = ceil(count($listes)/$per_page);
         $fin = $page_number * $per_page;
         $debut = $fin - $per_page;
-
+       
         if($nbrPage == $page_number){
             for($i=$debut; $i < count($listes); $i++){
                 $tabPaginate[] = $listes[$i];
@@ -87,11 +89,11 @@ function listPaginate($per_page, $listes, $page_number=1){
                 $tabPaginate[] = $listes[$i];
             }
         }
-        
         return $tabPaginate;
     }else{
         return [];
     }
+    // dd($tabPaginate);
 }
 
 function getCurrentPage($nbrPage){
@@ -145,6 +147,37 @@ function genererPaginationTemplate($uri, $current_page, $nbrPage,$per_page, $lis
     echo $pagination_html;
 }
 
+function genererPaginationTemplatePost($current_page, $nbrPage,$per_page, $listes){
+    $first = 1;
+    $previous = $current_page <= 1 ? 1 : $current_page-1;
+    $next = $current_page >= $nbrPage ? $nbrPage : $current_page+1;
+    $last = $nbrPage;
+
+    $range_end = $current_page * $per_page;
+    $range_start = $range_end - $per_page;
+    $nbreElement = count($listes);
+
+    if($current_page == $nbrPage){
+        $range_end = count($listes);
+    }
+
+    $pagination_html = '
+    <form action="" style="width: 100%;" method="POST">
+    <div class="pagination" style="width: 100%;">
+        <span>' . ($range_start + 1) . ' - ' . $range_end . ' of ' . $nbreElement . '</span>
+        <div class="pagination-right" style="column-gap: 11px;">
+            <button style="border:none" type="submit" name="first-paginate" value="' . $first . '" class="pagination-link first-page ' . ($current_page == 1 ? 'disabled-link' : '') . '">|<i class="fa-solid fa-chevron-left"></i></button>
+            <button style="border:none" type="submit" name="previous-paginate" value="' . $previous . '" class=" pagination-link previous ' . ($current_page == 1 ? 'disabled-link' : '') . '"><i class="fa-solid fa-chevron-left"></i></button>
+            <span class="pagination-numbers">' . $current_page . '</span>
+            <button style="border:none" type="submit" name="next-paginate" value="' . $next . '" class="pagination-link next ' . ($current_page == $nbrPage ? 'disabled-link' : '') . '"><i class="fa-solid fa-chevron-right"></i></button>
+            <button style="border:none" type="submit" name="last-paginate" value="' . $last . '" class="pagination-link last-page ' . ($current_page == $nbrPage ? 'disabled-link' : '') . '"><i class="fa-solid fa-chevron-right"></i>|</button>
+        </div>
+    </div>
+    </form>
+    ';
+
+    echo $pagination_html;
+}
 
 /**
 * Fin Pagination Function

@@ -1,83 +1,101 @@
 [
-  {
-    "email": "admin1@odc.com",
-    "nom": "admin1",
-    "prenom": "admin1",
-    "password": "$2y$10$jRel9hM8Ojs5XFQTk7EAw.Ke9T5rczH343KLCMKmDIHWhBNRepVwe",
-    "role": "1",
-    "promo": "6",
-    "image": "photo3.png"
-  },
-  {
-    "email": "admin2@odc.com",
-    "nom": "admin2",
-    "prenom": "admin2",
-    "password": "$2y$10$.Fmet1GwpmYF1bwCEpBKOeB8FfPMr86LIPq0en/2EMlU4H0CXIzAW",
-    "role": "1",
-    "promo": "5",
-    "image": "photo3.png"
-  },
-  {
-    "email": "admin3@odc.com",
-    "nom": "admin3",
-    "prenom": "admin3",
-    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
-    "role": "1",
-    "promo": "4",
-    "image": "photo3.png"
-  },
-  {
-    "email": "admin4@odc.com",
-    "nom": "admin4",
-    "prenom": "admin4",
-    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
-    "role": "1",
-    "promo": "3",
-    "image": "photo3.png"
-  },
-  {
-    "email": "admin5@odc.com",
-    "nom": "admin5",
-    "prenom": "admin5",
-    "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
-    "role": "1",
-    "promo": "2",
-    "image": "photo3.png"
-  },
-  {
-    "email": "app1@odc.com",
-    "nom": "app1",
-    "prenom": "app1",
-    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
-    "role": "2",
-    "promo": "6",
-    "image": "photo1.png"
-  },
-  {
-    "email": "app2@odc.com",
-    "nom": "app2",
-    "prenom": "app2",
-    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
-    "role": "2",
-    "promo": "6",
-    "image": "photo2.png"
-  },
-  {
-    "email": "app3@odc.com",
-    "nom": "app3",
-    "prenom": "app3",
-    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
-    "role": "2",
-    "promo": "5",
-    "image": "photo1.png"
-  },
-  {
-    "email": "app4@odc.com",
-    "nom": "app4",
-    "prenom": "app4",
-    "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
-    "role": "2",
-    "promo": "4",
-    "image": "photo2.png"
-  }
+    {
+        "email": "admin1@odc.com",
+        "nom": "admin1",
+        "prenom": "admin1",
+        "password": "$2y$10$jRel9hM8Ojs5XFQTk7EAw.Ke9T5rczH343KLCMKmDIHWhBNRepVwe",
+        "role": "1",
+        "promo": "6",
+        "image": "photo3.png"
+    },
+    {
+        "email": "admin2@odc.com",
+        "nom": "admin2",
+        "prenom": "admin2",
+        "password": "$2y$10$.Fmet1GwpmYF1bwCEpBKOeB8FfPMr86LIPq0en\/2EMlU4H0CXIzAW",
+        "role": "1",
+        "promo": "5",
+        "image": "photo3.png"
+    },
+    {
+        "email": "admin3@odc.com",
+        "nom": "admin3",
+        "prenom": "admin3",
+        "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
+        "role": "1",
+        "promo": "4",
+        "image": "photo3.png"
+    },
+    {
+        "email": "admin4@odc.com",
+        "nom": "admin4",
+        "prenom": "admin4",
+        "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
+        "role": "1",
+        "promo": "3",
+        "image": "photo3.png"
+    },
+    {
+        "email": "admin5@odc.com",
+        "nom": "admin5",
+        "prenom": "admin5",
+        "password": "$2y$10$pHQTpMU49eljQlyJBCnBN.VEHj7YeZOwTe5rQLUVHxpOH.juTUmGW",
+        "role": "1",
+        "promo": "2",
+        "image": "photo3.png"
+    },
+    {
+        "email": "app1@odc.com",
+        "nom": "app1",
+        "prenom": "app1",
+        "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
+        "role": "2",
+        "promo": "6",
+        "image": "photo1.png"
+    },
+    {
+        "email": "app2@odc.com",
+        "nom": "app2",
+        "prenom": "app2",
+        "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
+        "role": "2",
+        "promo": "6",
+        "image": "photo2.png"
+    },
+    {
+        "email": "app3@odc.com",
+        "nom": "app3",
+        "prenom": "app3",
+        "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
+        "role": "2",
+        "promo": "5",
+        "image": "photo1.png"
+    },
+    {
+        "email": "app4@odc.com",
+        "nom": "app4",
+        "prenom": "app4",
+        "password": "$2y$10$s7e1ghC69aZIxbgNrkEOW.7kweeoe60d4EMr1qO7J3WOSQY04tgl6",
+        "role": "2",
+        "promo": "4",
+        "image": "photo2.png"
+    },
+    {
+        "email": "barhamadieng66@gmail.com",
+        "nom": "Dieng",
+        "prenom": "Ibrahima",
+        "password": "$2y$10$AjmhUo3XiW8zuAtCb8e4hO\/t7E4LYO14SnObbVmE4lys2VdFbKZti",
+        "role": 2,
+        "promo": 6,
+        "image": "photo2.png"
+    },
+    {
+        "email": "iinvisible68@gmail.com",
+        "nom": "Dieng6",
+        "prenom": "Ibrahima6",
+        "password": "$2y$10$y42prVDuNEi6WcAlWP7ZouGQRF9Jddzrx.pxmPXw2R9e1NifkYSdS",
+        "role": 2,
+        "promo": 6,
+        "image": "photo2.png"
+    }
 ]

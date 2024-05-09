@@ -88,7 +88,7 @@ if($uri_ == "ref"){
                 }else{
                     $files_ = [
                         'image_referentiel' => [
-                         'name' => 'img/ref.jpg'
+                         'tmp_name' => 'img/ref.jpg'
                         ]
                     ];
                     if(isset($promo_to_ref) && (int)$promo_to_ref == (int)$_SESSION['promotion_active']){

@@ -21,7 +21,7 @@ function writeBase64ImageToCSV($base64Image, $csvFilePath, $idRef) {
 }
 
 function uploadFileEncode($files,$idRef){
-// dd($files);
+dd($files);
     $imagePath = $files["image_referentiel"]["tmp_name"];
     $csvFilePath = '../data/image_referentiels.csv';
     

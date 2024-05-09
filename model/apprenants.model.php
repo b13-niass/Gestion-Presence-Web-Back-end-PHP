@@ -48,13 +48,16 @@
 
     function findAllNewApprenant($promotion){
         $app_array_keys = [
+            'image',
             'nom',
             'prenom',
             'email',
             'datenaiss',
             'genre',
             'tel',
-            'referentiel'
+            'referentiel',
+            'promo',
+            'login'
         ];
 
         $apprenants = read_data_files('new_apprenants',  $app_array_keys);
@@ -68,6 +71,62 @@
         return $apprenants;
     }
 
+    function findAllNewApprenantWithoutProm(){
+        $app_array_keys = [
+            'image',
+            'nom',
+            'prenom',
+            'email',
+            'datenaiss',
+            'genre',
+            'tel',
+            'referentiel',
+            'promo',
+            'login'
+        ];
+
+        $apprenants = read_data_files('new_apprenants',  $app_array_keys);
+
+        return $apprenants;
+    }
+
+
+    function addApprenantToBase($email){
+        // $apprenants_new = findAllNewApprenant($promotion);
+        $origine = $all_apprenants_new = findAllNewApprenantWithoutProm();
+        $taille_init_all = count($all_apprenants_new);
+        $apprenants = findAllApprenantWithoutPro();
+
+
+
+        $all_apprenants_new = array_filter($all_apprenants_new, function($app)use($email){
+            return $app['email'] != $email;
+        });
+        $all_apprenants_new = array_values($all_apprenants_new);
+        if($taille_init_all > count($all_apprenants_new) ){
+            $apprenant = array_filter($origine, function($app)use($email){
+                return $app['email'] == $email;
+            });
+            $apprenant = array_values( $apprenant)[0];
+
+            $apprenant = [
+                'image' => $apprenant['image'],
+                'nom' => $apprenant['nom'],
+                'prenom' => $apprenant['prenom'],
+                'email' => $apprenant['email'],
+                'genre' => $apprenant['genre'],
+                'tel' => $apprenant['tel'],
+                'promo' => $apprenant['promo'],
+                'referentiel' => $apprenant['referentiel'],
+            ];
+            array_push( $apprenants, $apprenant);
+            // dd($apprenants);
+            write_data_files("new_apprenants", $all_apprenants_new);
+            write_data_files("apprenants", $apprenants);
+
+        }
+    }
+    
 
     function findAllApprenantWithoutPro(){
         $app_array_keys = [
@@ -151,17 +210,18 @@
          }, $apprenants_new);
         
         $apprenants_new = array_values($apprenants_new);
-
+        // dd($apprenants_new);
         // recherche champs requis
         foreach($apprenants_new as $app_new){
             if(empty($app_new['nom']) || empty($app_new['prenom']) ||
              empty($app_new['email']) || empty($app_new['tel']) || empty($app_new['referentiel'])){
                 $champ_requis[] = $app_new;
             }else{
+                // dd($app_new);
                 $new_without_doublon[] = $app_new;
             }
         }
-        
+        // dd($new_without_doublon);
         // les nouvelles données sans champs  manquant
         $apprenants_new = $new_without_doublon;
         $new_without_doublon = [];
@@ -234,6 +294,10 @@
             'importer' => $apprenants_new
         ];
 
+    }
+    function sendSingleEmail($email){
+        $result = sendMailToApprenant('../template/email-inlined.html.php', 'codev13.sendmail@gmail.com', $email);
+        return $result;
     }
 
     function sendMailToApprenant($html_template_link, $email_from, $email_to){

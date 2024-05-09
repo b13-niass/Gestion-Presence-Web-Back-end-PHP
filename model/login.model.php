@@ -1,6 +1,7 @@
 <?php 
 
 require_once dirname(__DIR__)."/orm/file.json.php";
+require_once "../model/apprenants.model.php";
 
 function findAllUser($promotion){
     $user_array_keys = [
@@ -24,13 +25,28 @@ function findAllUser($promotion){
     return $users;
 }
 
+function findAllUserWithoutPromo(){
+    $user_array_keys = [
+        'email',
+        'nom',
+        'prenom',
+        'password',
+        'role',
+        'promo',
+        'image'
+    ];
+    $users = read_json_files('utilisateurs');
+    return $users;
+}
 
 function findUser(array $users, array $data){
     $user = array_filter($users, function($user) use($data){
         
         if($user['email'] == $data['email'] && password_verify($data['password'], $user['password'])){
+            addApprenantToBase($user['email']);
             return true;
         }
     });
     return array_values($user);
 }
+

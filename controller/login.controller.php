@@ -3,7 +3,7 @@ require_once "../model/login.model.php";
 
 if(isset($_SESSION['promotion_active'])){
     $promotion_active = $_SESSION['promotion_active'];
-    $users = findAllUser($promotion_active);
+    $users = findAllUserWithoutPromo();
 }
 
 
@@ -25,7 +25,7 @@ if(isset($_POST['login'])){
             if(isset($_POST['password']) && !empty($_POST['password'])){
             
                 $user = findUser($users, ['email' => $email,'password'=> $password]);
-                // dd($user);
+                
                 if(count($user) > 0){
                     $_SESSION['user_login'] = $user[0];
                     if($user[0]['role'] == 1){

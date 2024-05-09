@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="dropdown-b" style="margin-right: 5%">
-            <button class="dropbtn-b">Filtre Par Référentiel_____</button>
+            <button class="dropbtn-b">Filtre Par Référentiel</button>
             <div class="dropdown-content-b">
                 <form action="" method="POST" id="formRef">
                     <?php foreach($referentiels_promo as $key => $ref) : ?>
@@ -42,11 +42,13 @@
                     <span>(<?= count($apprenants) ?>)</span>
                 </div>
                 <div class="search-add">
-                    <a href="#nouvelle-1"> <i class="fa fa-plus"></i>Nouvelle </a>
+                    <a href=""> <i class="fa fa-plus"></i>Nouvelle </a>
                     <a href="#insertion-masse"> Insertion en masse </a>
-                    <a href="/projet/data/fichier_model_apprenant.csv" download>
+                    <form action="" method="POST">
+                       <button type="submit" name="exemple-file">
                         <i class="fa-solid fa-right-to-bracket"></i>Fichier model
-                    </a>
+                       </button> 
+                    </form>
                     <a href="#liste-exclu">Liste des Exclus </a>
                 </div>
             </div>
@@ -84,7 +86,10 @@
                     <div class="col"><?= $apprenant['email'] ?></div>
                     <div class="col"><?= $apprenant['genre'] == 1 ? 'M' : 'F' ?></div>
                     <div class="col"><?= $apprenant['telephone'] ?></div>
-                    <div class="col"><span class="span-bleuf"></span></div>
+                    <div class="col action-btn" style="display: flex;flex-direction: column;row-gap:2px;">
+                        <a href="#carte-modal" style="text-decoration: none;background-color:#009186;color:white;padding: 0 18px;border-radius:3px;">Carte</a>
+                        <a href="#nouvelle-1" style="text-decoration: none;background-color:black;color:white;padding: 0 10px;border-radius:3px;">Modifier</a>
+                    </div>
                 </div>
                 <?php 
                     endforeach; 
@@ -129,7 +134,6 @@
     </div>
  
 </div>
-
 
 <div id="nouvelle-1" class="overlay2">
     <div class="popup2">
@@ -268,6 +272,7 @@
     <?php 
     if(isset($list_new_apprenant) && !empty($list_new_apprenant)){
         foreach($list_new_apprenant as $key => $value){
+           
     ?>
     <tr>
         <td><?= $value['nom'] ?></td>
@@ -276,15 +281,37 @@
         <td><?= date('d-m-Y',strtotime($value['datenaiss'])) ?></td>
         <td><?= $value['tel'] ?></td>
         <td><?= $value['referentiel'] ?></td>
-        <td class="activer">Importer</td>
+        <td style="padding: 0.3%">
+            <form action="" method="POST" style="width:100%;height: 35px;">
+                <input type="hidden" name="email" value="<?=$value['email']?>">
+                <button type="submit" name="resend-mail" style="width:100%;height:80%;border:none;background-color:#009186;color:white;">
+                    Renvoyer
+                </button>
+            </form>
+        </td>
     </tr>
     <?php
-        }
+        }    
     }    
     ?>
 
     </tbody>
   </table>
+  
+        </div>
+        <div class="popup4-footer" style="width: 100%;display:flex;column-gap:5px;margin-top:5px;">
+        <?php genererPaginationTemplatePost($current_page_new, $nbrPage_new,$per_page_new, $list_new_apprenant) ?>
+        </div>
+
+    </div>
+ 
+</div>
+
+<div id="carte-modal" class="overlay4">
+
+    <div class="popup5">
+        <a class="close" href="#">&times;</a>
+        <div class="popup5-body">
         </div>
     </div>
  

@@ -11,6 +11,61 @@
   font-size: 0.7rem!important;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem!important;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.7rem!important;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+  font-size: 0.7rem!important;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+.activer{
+    background-color: rgba(0, 255, 0, 0.2);
+    color: green;
+    
+}
+.desactiver{
+    background-color: rgba(0, 0, 255, 0.2);
+    color: red;
+}
+.header-rappor{
+    display: flex;
+    column-gap: 5px;
+}
+.header-rappor a{
+    text-decoration: none;
+    padding: 0.5% 1%;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+
+}
+
+.rap-link1{
+    background-color: rgba(0, 255, 0, 0.5);
+    color: black!important;
+}
+.rap-link2,.rap-link3,.rap-link4,.rap-link5{
+    background-color: rgba(255, 0, 0, 0.5);
+}
 </style>
 <div class="container-rapport">
     <div class="header-rappor">

@@ -1,4 +1,6 @@
 <?php 
+require_once "../config/SimpleXLSX.php";
+use Shuchkin\SimpleXLSX;
 
 function read_data_files($file_name,$keys = null){
     $chemin = "../data/$file_name.csv";
@@ -15,18 +17,31 @@ function read_data_files($file_name,$keys = null){
 }
 
 function read_data_files_app($chemin,$keys = null){
-    $csvData = file_get_contents($chemin);
-    $lines = explode(PHP_EOL, $csvData);
+    // $csvData = file_get_contents($chemin);
+    // $lines = explode(PHP_EOL, $csvData);
     $array = array();
-    foreach ($lines as $key => $line) {
-        if($key == 0){
-            continue;
+    // foreach ($lines as $key => $line) {
+    //     if($key == 0){
+    //         continue;
+    //     }
+    //     if(strlen($line) > 8){
+    //         // var_dump($line);
+    //         $values = str_getcsv($line, ';');
+    //         dd($values);
+    //         $array[] = $keys == null ? $values : array_combine($keys, $values);
+    //     }
+    // }
+   
+
+    if ( $xlsx = SimpleXLSX::parse($chemin) ) {
+        $result = $xlsx->rows();
+        array_shift($result);
+        foreach ($result as $row) {
+            $array[] = $keys == null ? $row : array_combine($keys, $row);
         }
-        if(strlen($line) > 8){
-            // var_dump($line);
-            $values = str_getcsv($line, ';');
-            $array[] = $keys == null ? $values : array_combine($keys, $values);
-        }
+        
+    } else {
+        echo SimpleXLSX::parseError();
     }
     // dd($array);
     return $array;

@@ -158,11 +158,15 @@
 .tableau-titre a:nth-child(2) i {
   padding-right: 10%;
 }
-
-.tableau-titre a:nth-child(3) {
+.tableau-titre .search-add form {
   width: 20%;
+  height: 100%;
+}
+.tableau-titre button {
+  width: 100%;
   padding: 2%;
-  /* height: 0%; */
+  height: 100%;
+  border: none;
   background-color: #0e7fa2;
   text-decoration: none;
   color: white;
@@ -172,8 +176,9 @@
   align-items: center;
   justify-content: center;
   column-gap: 5px;
+  cursor: pointer;
 }
-.tableau-titre a:nth-child(3) i {
+.tableau-titre button i {
   /* padding-right: 10%; */
   rotate: 90deg;
   height: 10%;
@@ -435,6 +440,38 @@
   border: none;
 }
 
+/*Modal5*/
+
+.popup5 {
+  display: flex;
+  height: 38vh;
+  flex-wrap: wrap;
+  margin: 70px auto;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 0s ease-in-out;
+}
+.popup5 .close {
+  /* position: absolute;
+  top: 20px;
+  right: 30px; */
+  transition: all 200ms;
+  /* font-size: 20px;
+  font-weight: bold;
+  text-decoration: none; */
+  /* color: #333; */
+}
+
+.popup5 > div a:first-child {
+  text-decoration: none;
+  background-color: red;
+  padding: 1.5% 2.5%;
+  color: white;
+  border-radius: var(--border-radius-primaire);
+}
+
 /*Modal 4*/
 .popup4 > div a:first-child {
   text-decoration: none;
@@ -509,8 +546,9 @@
   }
 
   thead {
-    background-color: #333;
+    background-color: var(--couleur-secondaire);
     color: #fff;
+    font-weight: bold;
     font-size: 0.7rem !important;
   }
 
@@ -554,13 +592,14 @@
 }
 
 #liste-exclu * {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 /*Modal 4*/
 
 .overlay1,
 .overlay2,
-.overlay3 {
+.overlay3,
+.overlay4 {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -573,7 +612,8 @@
 }
 .overlay1:target,
 .overlay2:target,
-.overlay3:target {
+.overlay3:target,
+.overlay4:target {
   visibility: visible;
   opacity: 1;
 }
