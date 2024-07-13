@@ -307,8 +307,8 @@
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = "codev13.sendmail@gmail.com";
-        $mail->Password = 'btqm wvnj ztxx xbru';               // sets the prefix to the servier
+        $mail->Username = ""; // email places
+        $mail->Password = '';      // password places
         $mail->SMTPSecure = "tls";
         // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
